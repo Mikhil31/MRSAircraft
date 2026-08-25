@@ -1,0 +1,58 @@
+# =============================================================================
+# What reaches the remote: docs/ and this file. That is all.
+#
+# docs/ IS THE WEBSITE. Not documentation. GitHub Pages has a built-in option
+# to serve a repo's /docs folder, which is why it has that name. Everything
+# inside it is the finished, static site: HTML, CSS, JS, images.
+#
+# NOTE: free GitHub Pages requires a PUBLIC repository. Anything committed is
+# readable by anyone who finds it, so treat this file as the boundary between
+# what is published and what stays on the build machine. Nothing internal
+# belongs on the far side of it, including in these comments.
+# =============================================================================
+
+# --- secrets ----------------------------------------------------------------
+.env
+.env.local
+*.key
+*.pem
+
+# --- markdown ---------------------------------------------------------------
+# Notes, specs and handover documents all stay local.
+*.md
+
+# --- the generator ----------------------------------------------------------
+# tools/ builds docs/. The remote only needs the built output, so the generator
+# stays on this machine. Consequence: a fresh clone can serve the site but
+# cannot rebuild it. Keep this folder backed up somewhere.
+tools/
+
+# --- source material, not site assets ---------------------------------------
+# Originals only. Everything the site actually serves is built into
+# docs/assets/img/ by tools/build_images.py.
+Information img/
+documentation/
+candidates/
+models-in/
+*.docx
+
+# --- build scratch ----------------------------------------------------------
+# Downloads, intermediate models, contact sheets. All reproducible.
+.work/
+
+# --- superseded -------------------------------------------------------------
+mrs-aircraft-site/
+
+# --- local tooling ----------------------------------------------------------
+.agents/
+.claude/
+skills-lock.json
+
+# --- os and editor ----------------------------------------------------------
+~$*
+Thumbs.db
+desktop.ini
+.DS_Store
+*.swp
+.idea/
+.vscode/

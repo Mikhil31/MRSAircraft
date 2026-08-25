@@ -1,0 +1,1333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MRS Aircraft &ndash; photograph selection</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Photograph options for the MRS Aircraft website.">
+<meta name="theme-color" content="#0b0f14">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=swap">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg:#0b0f14; --panel:#141b24; --line:rgba(255,255,255,.13);
+    --ink:#e9eef6; --mute:#9aa9bd; --faint:#67768b; --gold:#dfbe6b;
+    --font:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --mono:"Geist Mono",ui-monospace,monospace;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--font);
+    font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  a { color:var(--gold); }
+  .wrap { max-width:1400px; margin:0 auto; padding:0 clamp(20px,4vw,48px); }
+  .skip { position:absolute; left:16px; top:16px; z-index:5; padding:12px 18px;
+    border-radius:8px; background:var(--gold); color:#12161d; font-weight:600;
+    text-decoration:none; transform:translateY(-160%); transition:transform .2s; }
+  .skip:focus-visible { transform:none; outline:2px solid #fff; outline-offset:2px; }
+
+  .intro { padding:clamp(48px,8vw,96px) 0 clamp(32px,5vw,56px); }
+  .brand { font-family:var(--mono); font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--gold); margin:0 0 18px; }
+  h1 { margin:0; font-size:clamp(30px,4.5vw,52px); line-height:1.05;
+    letter-spacing:-.025em; font-weight:600; text-wrap:balance; }
+  .lede { margin:20px 0 0; max-width:62ch; font-size:clamp(16px,1.6vw,18px);
+    color:var(--mute); }
+  .how { margin:32px 0 0; padding:20px 24px; border:1px solid var(--line);
+    border-radius:12px; background:var(--panel); max-width:62ch; }
+  .how p { margin:0; color:var(--mute); font-size:15px; }
+  .how b { color:var(--ink); }
+  .how code { font-family:var(--mono); font-size:13px; color:var(--gold);
+    background:rgba(223,190,107,.12); padding:2px 7px; border-radius:5px; }
+
+  .toc { list-style:none; margin:36px 0 0; padding:0; display:grid; gap:0;
+    max-width:62ch; border-top:1px solid var(--line); }
+  .toc li { display:flex; justify-content:space-between; gap:20px; padding:12px 2px;
+    border-bottom:1px solid var(--line); font-size:15px; }
+  .toc a { text-decoration:none; }
+  .toc a:hover { text-decoration:underline; }
+  .toc span { font-family:var(--mono); font-size:12px; color:var(--faint); }
+
+  section { padding:clamp(44px,6vw,80px) 0; border-top:1px solid var(--line); }
+  .head { max-width:64ch; margin-bottom:clamp(24px,3vw,40px); }
+  .head h2 { margin:0; font-size:clamp(24px,3vw,36px); letter-spacing:-.02em;
+    font-weight:600; }
+  .codes { margin:6px 0 12px; font-family:var(--mono); font-size:12px;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--gold); }
+  .note { margin:0; color:var(--mute); font-size:15px; }
+
+  .grid { display:grid; gap:clamp(16px,2vw,28px);
+    grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr)); }
+  .card { margin:0; background:var(--panel); border:1px solid var(--line);
+    border-radius:12px; overflow:hidden; }
+  .card a { display:block; }
+  .card img { display:block; width:100%; height:auto; aspect-ratio:3/2;
+    object-fit:cover; background:#0f151d;
+    transition:opacity .2s ease; }
+  .card a:hover img { opacity:.86; }
+  .card a:focus-visible { outline:2px solid var(--gold); outline-offset:-3px; }
+  figcaption { padding:14px 16px 16px; display:grid; gap:5px; }
+  .ref { font-family:var(--mono); font-size:15px; font-weight:500;
+    letter-spacing:.06em; color:var(--gold); }
+  .alt { font-size:13.5px; color:var(--mute); }
+  .who { font-size:12px; color:var(--faint); }
+
+  footer { padding:clamp(40px,6vw,72px) 0; border-top:1px solid var(--line);
+    color:var(--faint); font-size:13.5px; }
+  footer p { margin:0 0 8px; max-width:70ch; }
+  @media print {
+    body { background:#fff; color:#000; }
+    .card { break-inside:avoid; border-color:#ccc; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#start">Skip to the photographs</a>
+<div class="wrap">
+
+  <div class="intro">
+    <p class="brand">MRS Aircraft Private Limited</p>
+    <h1>Photograph options for the website</h1>
+    <p class="lede">Every photograph below is licensed for commercial use. Nothing
+    here is final. Please look through each section and tell us which ones you
+    want, and we will put them on the site.</p>
+
+    <div class="how">
+      <p><b>How to choose.</b> Each photograph has a code underneath it, like
+      <code>HERO-01</code>. Note the codes you like and send them back in a
+      reply. One per section is enough, and a second choice is useful if you
+      have one. Click any photograph to see it at full size.</p>
+    </div>
+
+    <ul class="toc" id="start"><li><a href="#01-hero">Home page, main image</a> <span>HERO-01 to HERO-12</span></li><li><a href="#02-manufacturing">Aircraft Manufacturing</a> <span>MFG-01 to MFG-12</span></li><li><a href="#03-maintenance">Airport Maintenance</a> <span>MNT-01 to MNT-12</span></li><li><a href="#04-academy">Air Academy</a> <span>ACAD-01 to ACAD-12</span></li><li><a href="#05-careers-people">Careers</a> <span>PPL-01 to PPL-12</span></li><li><a href="#06-about-team">About</a> <span>TEAM-01 to TEAM-12</span></li><li><a href="#07-contact">Contact</a> <span>LOC-01 to LOC-12</span></li><li><a href="#08-texture-detail">Supporting detail</a> <span>DTL-01 to DTL-12</span></li></ul>
+  </div>
+
+    <section id="01-hero">
+      <div class="head">
+        <h2>Home page, main image</h2>
+        <p class="codes">HERO-01 to HERO-12</p>
+        <p class="note">The first thing anyone sees. It sits full width behind the headline, so it needs to work with white text over it. It should say aerospace engineering rather than air travel.</p>
+      </div>
+      <div class="grid">
+        <figure class="card">
+          <a href="img/HERO-01-full.webp" target="_blank" rel="noopener"
+             aria-label="Open HERO-01 at full size">
+            <img src="img/HERO-01.webp" alt="Black and white photo of an airplane parked inside a large hangar with industrial lighting." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">HERO-01</b>
+            <span class="alt">Black and white photo of an airplane parked inside a large hangar with industrial lighting.</span>
+            <span class="who">Photograph by Ricky Esquivel</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/HERO-02-full.webp" target="_blank" rel="noopener"
+             aria-label="Open HERO-02 at full size">
+            <img src="img/HERO-02.webp" alt="Old fashioned gray propeller jet parked for maintenance in modern spacious air shed" loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">HERO-02</b>
+            <span class="alt">Old fashioned gray propeller jet parked for maintenance in modern spacious air shed</span>
+            <span class="who">Photograph by Daniel Torobekov</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/HERO-03-full.webp" target="_blank" rel="noopener"
+             aria-label="Open HERO-03 at full size">
+            <img src="img/HERO-03.webp" alt="A military jet aircraft soaring through a clear blue sky, showcasing agility and power." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">HERO-03</b>
+            <span class="alt">A military jet aircraft soaring through a clear blue sky, showcasing agility and power.</span>
+            <span class="who">Photograph by Alejandro Henriquez</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/HERO-04-full.webp" target="_blank" rel="noopener"
+             aria-label="Open HERO-04 at full size">
+            <img src="img/HERO-04.webp" alt="Detailed view of an airplane fuselage showing windows and wing in bright daylight." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">HERO-04</b>
+            <span class="alt">Detailed view of an airplane fuselage showing windows and wing in bright daylight.</span>
+            <span class="who">Photograph by Magda Ehlers</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/HERO-05-full.webp" target="_blank" rel="noopener"
+             aria-label="Open HERO-05 at full size">
+            <img src="img/HERO-05.webp" alt="Exterior view of an Airbus factory building with the company logo prominently displayed." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">HERO-05</b>
+            <span class="alt">Exterior view of an Airbus factory building with the company logo prominently displayed.</span>
+            <span class="who">Photograph by Peter Xie</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/HERO-06-full.webp" target="_blank" rel="noopener"
+             aria-label="Open HERO-06 at full size">
+            <img src="img/HERO-06.webp" alt="Detailed close-up of a jet aircraft&#x27;s engines at an air show in Hampton, Virginia." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">HERO-06</b>
+            <span class="alt">Detailed close-up of a jet aircraft&#x27;s engines at an air show in Hampton, Virginia.</span>
+            <span class="who">Photograph by Jaxon Matthew Willis</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/HERO-07-full.webp" target="_blank" rel="noopener"
+             aria-label="Open HERO-07 at full size">
+            <img src="img/HERO-07.webp" alt="Private jets parked inside a large hangar in Paris, offering a glimpse into aviation luxury." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">HERO-07</b>
+            <span class="alt">Private jets parked inside a large hangar in Paris, offering a glimpse into aviation luxury.</span>
+            <span class="who">Photograph by Abdelmoughit  LAHBABI</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/HERO-08-full.webp" target="_blank" rel="noopener"
+             aria-label="Open HERO-08 at full size">
+            <img src="img/HERO-08.webp" alt="A fighter jet parked inside an arched military hangar, showcasing its sleek design." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">HERO-08</b>
+            <span class="alt">A fighter jet parked inside an arched military hangar, showcasing its sleek design.</span>
+            <span class="who">Photograph by Miguel Cuenca</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/HERO-09-full.webp" target="_blank" rel="noopener"
+             aria-label="Open HERO-09 at full size">
+            <img src="img/HERO-09.webp" alt="Detailed black and white photo of airplane&#x27;s undercarriage on a foggy runway." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">HERO-09</b>
+            <span class="alt">Detailed black and white photo of airplane&#x27;s undercarriage on a foggy runway.</span>
+            <span class="who">Photograph by Joerg Mangelsen</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/HERO-10-full.webp" target="_blank" rel="noopener"
+             aria-label="Open HERO-10 at full size">
+            <img src="img/HERO-10.webp" alt="Detailed black and white photo of airplane exterior showing fuselage and windows, emphasizing textures." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">HERO-10</b>
+            <span class="alt">Detailed black and white photo of airplane exterior showing fuselage and windows, emphasizing textures.</span>
+            <span class="who">Photograph by Magda Ehlers</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/HERO-11-full.webp" target="_blank" rel="noopener"
+             aria-label="Open HERO-11 at full size">
+            <img src="img/HERO-11.webp" alt="Close-up of aircraft jet engines displayed inside a hangar in Paris, France." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">HERO-11</b>
+            <span class="alt">Close-up of aircraft jet engines displayed inside a hangar in Paris, France.</span>
+            <span class="who">Photograph by Abdelmoughit  LAHBABI</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/HERO-12-full.webp" target="_blank" rel="noopener"
+             aria-label="Open HERO-12 at full size">
+            <img src="img/HERO-12.webp" alt="View of a private jet in a spacious hangar with architectural design elements." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">HERO-12</b>
+            <span class="alt">View of a private jet in a spacious hangar with architectural design elements.</span>
+            <span class="who">Photograph by Abdelmoughit  LAHBABI</span>
+          </figcaption>
+        </figure></div>
+    </section>
+    <section id="02-manufacturing">
+      <div class="head">
+        <h2>Aircraft Manufacturing</h2>
+        <p class="codes">MFG-01 to MFG-12</p>
+        <p class="note">Used on the home page and again on the What We Do page. Design, engineering and build.</p>
+      </div>
+      <div class="grid">
+        <figure class="card">
+          <a href="img/MFG-01-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MFG-01 at full size">
+            <img src="img/MFG-01.webp" alt="Exterior view of an Airbus factory building with the company logo prominently displayed." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MFG-01</b>
+            <span class="alt">Exterior view of an Airbus factory building with the company logo prominently displayed.</span>
+            <span class="who">Photograph by Peter Xie</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MFG-02-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MFG-02 at full size">
+            <img src="img/MFG-02.webp" alt="Detailed close-up of a CNC milling machine working on metal, showcasing precision and industry technology." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MFG-02</b>
+            <span class="alt">Detailed close-up of a CNC milling machine working on metal, showcasing precision and industry technology.</span>
+            <span class="who">Photograph by Daniel Smyth</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MFG-03-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MFG-03 at full size">
+            <img src="img/MFG-03.webp" alt="Industrial chimney with ladder against a clear sky, featuring a jet stream." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MFG-03</b>
+            <span class="alt">Industrial chimney with ladder against a clear sky, featuring a jet stream.</span>
+            <span class="who">Photograph by Marcin PORĘBSKI</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MFG-04-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MFG-04 at full size">
+            <img src="img/MFG-04.webp" alt="Close-up of a laser cutter in an industrial factory, showcasing modern manufacturing technology." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MFG-04</b>
+            <span class="alt">Close-up of a laser cutter in an industrial factory, showcasing modern manufacturing technology.</span>
+            <span class="who">Photograph by Cemrecan Yurtman</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MFG-05-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MFG-05 at full size">
+            <img src="img/MFG-05.webp" alt="Close-up of a spinning lathe machine in an industrial workshop setting." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MFG-05</b>
+            <span class="alt">Close-up of a spinning lathe machine in an industrial workshop setting.</span>
+            <span class="who">Photograph by Connor Lucock</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MFG-06-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MFG-06 at full size">
+            <img src="img/MFG-06.webp" alt="A large airplane parked at an Airbus hangar during nighttime, lit by bright lights." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MFG-06</b>
+            <span class="alt">A large airplane parked at an Airbus hangar during nighttime, lit by bright lights.</span>
+            <span class="who">Photograph by Peter Xie</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MFG-07-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MFG-07 at full size">
+            <img src="img/MFG-07.webp" alt="Detailed image of a cutting head used in machining and metalworking industries." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MFG-07</b>
+            <span class="alt">Detailed image of a cutting head used in machining and metalworking industries.</span>
+            <span class="who">Photograph by Pixabay</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MFG-08-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MFG-08 at full size">
+            <img src="img/MFG-08.webp" alt="Spacious modern factory interior showcasing industrial manufacturing machinery." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MFG-08</b>
+            <span class="alt">Spacious modern factory interior showcasing industrial manufacturing machinery.</span>
+            <span class="who">Photograph by Peter Xie</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MFG-09-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MFG-09 at full size">
+            <img src="img/MFG-09.webp" alt="Close-up of a plasma cutting machine working on a metal sheet in an industrial setting." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MFG-09</b>
+            <span class="alt">Close-up of a plasma cutting machine working on a metal sheet in an industrial setting.</span>
+            <span class="who">Photograph by Ana Victoria  Valverde</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MFG-10-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MFG-10 at full size">
+            <img src="img/MFG-10.webp" alt="Close-up of an industrial machine cutting a metal rod with precision." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MFG-10</b>
+            <span class="alt">Close-up of an industrial machine cutting a metal rod with precision.</span>
+            <span class="who">Photograph by Peter Xie</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MFG-11-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MFG-11 at full size">
+            <img src="img/MFG-11.webp" alt="High-resolution image of a jet engine turbine blade, showcasing intricate details and curvature." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MFG-11</b>
+            <span class="alt">High-resolution image of a jet engine turbine blade, showcasing intricate details and curvature.</span>
+            <span class="who">Photograph by Jeffry Surianto</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MFG-12-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MFG-12 at full size">
+            <img src="img/MFG-12.webp" alt="High-precision milling machine cutting a metal piece, showcasing industrial machinery." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MFG-12</b>
+            <span class="alt">High-precision milling machine cutting a metal piece, showcasing industrial machinery.</span>
+            <span class="who">Photograph by Daniel Smyth</span>
+          </figcaption>
+        </figure></div>
+    </section>
+    <section id="03-maintenance">
+      <div class="head">
+        <h2>Airport Maintenance</h2>
+        <p class="codes">MNT-01 to MNT-12</p>
+        <p class="note">Used on the home page and again on the What We Do page. Airfields, ground equipment, utilities.</p>
+      </div>
+      <div class="grid">
+        <figure class="card">
+          <a href="img/MNT-01-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MNT-01 at full size">
+            <img src="img/MNT-01.webp" alt="Old fashioned gray propeller jet parked for maintenance in modern spacious air shed" loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MNT-01</b>
+            <span class="alt">Old fashioned gray propeller jet parked for maintenance in modern spacious air shed</span>
+            <span class="who">Photograph by Daniel Torobekov</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MNT-02-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MNT-02 at full size">
+            <img src="img/MNT-02.webp" alt="Black and white image of airport ground crew managing service vehicles on the tarmac." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MNT-02</b>
+            <span class="alt">Black and white image of airport ground crew managing service vehicles on the tarmac.</span>
+            <span class="who">Photograph by Jonathan Borba</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MNT-03-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MNT-03 at full size">
+            <img src="img/MNT-03.webp" alt="A mechanic checks a vintage biplane at an airfield in Madrid on a sunny day." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MNT-03</b>
+            <span class="alt">A mechanic checks a vintage biplane at an airfield in Madrid on a sunny day.</span>
+            <span class="who">Photograph by Miguel Cuenca</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MNT-04-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MNT-04 at full size">
+            <img src="img/MNT-04.webp" alt="A Swissport tractor towing a trailer on an airport runway in bright daylight." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MNT-04</b>
+            <span class="alt">A Swissport tractor towing a trailer on an airport runway in bright daylight.</span>
+            <span class="who">Photograph by Rafael Rodrigues</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MNT-05-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MNT-05 at full size">
+            <img src="img/MNT-05.webp" alt="A ground crew vehicle navigates the airport tarmac during daytime operations." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MNT-05</b>
+            <span class="alt">A ground crew vehicle navigates the airport tarmac during daytime operations.</span>
+            <span class="who">Photograph by K</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MNT-06-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MNT-06 at full size">
+            <img src="img/MNT-06.webp" alt="Large commercial airplane parked in an illuminated airport hangar with maintenance staff visible." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MNT-06</b>
+            <span class="alt">Large commercial airplane parked in an illuminated airport hangar with maintenance staff visible.</span>
+            <span class="who">Photograph by Peter Xie</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MNT-07-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MNT-07 at full size">
+            <img src="img/MNT-07.webp" alt="Black and white photo of a catering truck with crew on an airport tarmac." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MNT-07</b>
+            <span class="alt">Black and white photo of a catering truck with crew on an airport tarmac.</span>
+            <span class="who">Photograph by Jonathan Borba</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MNT-08-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MNT-08 at full size">
+            <img src="img/MNT-08.webp" alt="Man in blue inspecting a wooden propeller of a vintage aircraft outdoors in Madrid." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MNT-08</b>
+            <span class="alt">Man in blue inspecting a wooden propeller of a vintage aircraft outdoors in Madrid.</span>
+            <span class="who">Photograph by Miguel Cuenca</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MNT-09-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MNT-09 at full size">
+            <img src="img/MNT-09.webp" alt="A small airport utility vehicle on a rainy tarmac, highlighting ground support operations." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MNT-09</b>
+            <span class="alt">A small airport utility vehicle on a rainy tarmac, highlighting ground support operations.</span>
+            <span class="who">Photograph by Ariel Hernandez</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MNT-10-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MNT-10 at full size">
+            <img src="img/MNT-10.webp" alt="A yellow pickup truck drives across the open runway at Guarulhos International Airport." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MNT-10</b>
+            <span class="alt">A yellow pickup truck drives across the open runway at Guarulhos International Airport.</span>
+            <span class="who">Photograph by Beto Mendes</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MNT-11-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MNT-11 at full size">
+            <img src="img/MNT-11.webp" alt="View of maintenance crew inspecting an airplane in a hangar." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MNT-11</b>
+            <span class="alt">View of maintenance crew inspecting an airplane in a hangar.</span>
+            <span class="who">Photograph by Peter Xie</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/MNT-12-full.webp" target="_blank" rel="noopener"
+             aria-label="Open MNT-12 at full size">
+            <img src="img/MNT-12.webp" alt="Aerial view of airport workers walking on the tarmac in Buenos Aires on a sunny day." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">MNT-12</b>
+            <span class="alt">Aerial view of airport workers walking on the tarmac in Buenos Aires on a sunny day.</span>
+            <span class="who">Photograph by Juan Moccagatta</span>
+          </figcaption>
+        </figure></div>
+    </section>
+    <section id="04-academy">
+      <div class="head">
+        <h2>Air Academy</h2>
+        <p class="codes">ACAD-01 to ACAD-12</p>
+        <p class="note">Used on the home page and again on the What We Do page. Training and certification.</p>
+      </div>
+      <div class="grid">
+        <figure class="card">
+          <a href="img/ACAD-01-full.webp" target="_blank" rel="noopener"
+             aria-label="Open ACAD-01 at full size">
+            <img src="img/ACAD-01.webp" alt="A female pilot operates a flight simulator in an advanced training facility." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">ACAD-01</b>
+            <span class="alt">A female pilot operates a flight simulator in an advanced training facility.</span>
+            <span class="who">Photograph by ThisIsEngineering</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/ACAD-02-full.webp" target="_blank" rel="noopener"
+             aria-label="Open ACAD-02 at full size">
+            <img src="img/ACAD-02.webp" alt="Instructor explaining SMPS voltage section diagram during AC repair course in New Delhi." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">ACAD-02</b>
+            <span class="alt">Instructor explaining SMPS voltage section diagram during AC repair course in New Delhi.</span>
+            <span class="who">Photograph by Multitech Institute</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/ACAD-03-full.webp" target="_blank" rel="noopener"
+             aria-label="Open ACAD-03 at full size">
+            <img src="img/ACAD-03.webp" alt="Hands carefully examining a metal drill bit during a workshop session." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">ACAD-03</b>
+            <span class="alt">Hands carefully examining a metal drill bit during a workshop session.</span>
+            <span class="who">Photograph by Julia Malcher</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/ACAD-04-full.webp" target="_blank" rel="noopener"
+             aria-label="Open ACAD-04 at full size">
+            <img src="img/ACAD-04.webp" alt="A mechanic handing a wrench in a dimly lit garage workshop, showing teamwork in auto repair." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">ACAD-04</b>
+            <span class="alt">A mechanic handing a wrench in a dimly lit garage workshop, showing teamwork in auto repair.</span>
+            <span class="who">Photograph by cottonbro studio</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/ACAD-05-full.webp" target="_blank" rel="noopener"
+             aria-label="Open ACAD-05 at full size">
+            <img src="img/ACAD-05.webp" alt="Close-up of airplane cockpit controls with illuminated electronic display panels." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">ACAD-05</b>
+            <span class="alt">Close-up of airplane cockpit controls with illuminated electronic display panels.</span>
+            <span class="who">Photograph by Terrence Bowen</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/ACAD-06-full.webp" target="_blank" rel="noopener"
+             aria-label="Open ACAD-06 at full size">
+            <img src="img/ACAD-06.webp" alt="Participants learn AC repair during a hands-on session in Delhi, India." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">ACAD-06</b>
+            <span class="alt">Participants learn AC repair during a hands-on session in Delhi, India.</span>
+            <span class="who">Photograph by Multitech Institute</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/ACAD-07-full.webp" target="_blank" rel="noopener"
+             aria-label="Open ACAD-07 at full size">
+            <img src="img/ACAD-07.webp" alt="A black woman focused on an electronics engineering project using a soldering iron indoors." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">ACAD-07</b>
+            <span class="alt">A black woman focused on an electronics engineering project using a soldering iron indoors.</span>
+            <span class="who">Photograph by ThisIsEngineering</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/ACAD-08-full.webp" target="_blank" rel="noopener"
+             aria-label="Open ACAD-08 at full size">
+            <img src="img/ACAD-08.webp" alt="Side view of senior worker in eyeglasses and trainee handling detail on workbench in workshop" loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">ACAD-08</b>
+            <span class="alt">Side view of senior worker in eyeglasses and trainee handling detail on workbench in workshop</span>
+            <span class="who">Photograph by Andrea Piacquadio</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/ACAD-09-full.webp" target="_blank" rel="noopener"
+             aria-label="Open ACAD-09 at full size">
+            <img src="img/ACAD-09.webp" alt="Instructor explaining BLDC motor circuit diagram on interactive board indoors." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">ACAD-09</b>
+            <span class="alt">Instructor explaining BLDC motor circuit diagram on interactive board indoors.</span>
+            <span class="who">Photograph by Multitech Institute</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/ACAD-10-full.webp" target="_blank" rel="noopener"
+             aria-label="Open ACAD-10 at full size">
+            <img src="img/ACAD-10.webp" alt="Engineers analyzing aircraft cockpit design during a simulation session." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">ACAD-10</b>
+            <span class="alt">Engineers analyzing aircraft cockpit design during a simulation session.</span>
+            <span class="who">Photograph by ThisIsEngineering</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/ACAD-11-full.webp" target="_blank" rel="noopener"
+             aria-label="Open ACAD-11 at full size">
+            <img src="img/ACAD-11.webp" alt="Technician engaged in AC repair at a New Delhi workshop. Indoor learning session." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">ACAD-11</b>
+            <span class="alt">Technician engaged in AC repair at a New Delhi workshop. Indoor learning session.</span>
+            <span class="who">Photograph by Multitech Institute</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/ACAD-12-full.webp" target="_blank" rel="noopener"
+             aria-label="Open ACAD-12 at full size">
+            <img src="img/ACAD-12.webp" alt="A technician engaged in soldering electronic components in Baghdad, Iraq, wearing a blue logo shirt." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">ACAD-12</b>
+            <span class="alt">A technician engaged in soldering electronic components in Baghdad, Iraq, wearing a blue logo shirt.</span>
+            <span class="who">Photograph by khezez  | خزاز</span>
+          </figcaption>
+        </figure></div>
+    </section>
+    <section id="05-careers-people">
+      <div class="head">
+        <h2>Careers</h2>
+        <p class="codes">PPL-01 to PPL-12</p>
+        <p class="note">The banner across the top of the careers page. This is the only place the site shows people, so it carries a lot of weight with candidates.</p>
+      </div>
+      <div class="grid">
+        <figure class="card">
+          <a href="img/PPL-01-full.webp" target="_blank" rel="noopener"
+             aria-label="Open PPL-01 at full size">
+            <img src="img/PPL-01.webp" alt="A factory worker wearing safety gear operating machinery in an industrial setting." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">PPL-01</b>
+            <span class="alt">A factory worker wearing safety gear operating machinery in an industrial setting.</span>
+            <span class="who">Photograph by Hoang NC</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/PPL-02-full.webp" target="_blank" rel="noopener"
+             aria-label="Open PPL-02 at full size">
+            <img src="img/PPL-02.webp" alt="Female engineer in safety gear at a construction site with steel structure background." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">PPL-02</b>
+            <span class="alt">Female engineer in safety gear at a construction site with steel structure background.</span>
+            <span class="who">Photograph by Mikael Blomkvist</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/PPL-03-full.webp" target="_blank" rel="noopener"
+             aria-label="Open PPL-03 at full size">
+            <img src="img/PPL-03.webp" alt="Worker handling camshafts and cylinder head in a mechanic workshop." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">PPL-03</b>
+            <span class="alt">Worker handling camshafts and cylinder head in a mechanic workshop.</span>
+            <span class="who">Photograph by cottonbro studio</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/PPL-04-full.webp" target="_blank" rel="noopener"
+             aria-label="Open PPL-04 at full size">
+            <img src="img/PPL-04.webp" alt="A mechanic checks a vintage biplane at an airfield in Madrid on a sunny day." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">PPL-04</b>
+            <span class="alt">A mechanic checks a vintage biplane at an airfield in Madrid on a sunny day.</span>
+            <span class="who">Photograph by Miguel Cuenca</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/PPL-05-full.webp" target="_blank" rel="noopener"
+             aria-label="Open PPL-05 at full size">
+            <img src="img/PPL-05.webp" alt="Three colorful safety helmets stacked on a concrete surface with city skyline in background." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">PPL-05</b>
+            <span class="alt">Three colorful safety helmets stacked on a concrete surface with city skyline in background.</span>
+            <span class="who">Photograph by Khwanchai Phanthong</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/PPL-06-full.webp" target="_blank" rel="noopener"
+             aria-label="Open PPL-06 at full size">
+            <img src="img/PPL-06.webp" alt="Workers with helmets operating chains in an industrial setting, Libya." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">PPL-06</b>
+            <span class="alt">Workers with helmets operating chains in an industrial setting, Libya.</span>
+            <span class="who">Photograph by abdo alshreef</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/PPL-07-full.webp" target="_blank" rel="noopener"
+             aria-label="Open PPL-07 at full size">
+            <img src="img/PPL-07.webp" alt="Confident male engineer wearing safety helmet and goggles in industrial setting." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">PPL-07</b>
+            <span class="alt">Confident male engineer wearing safety helmet and goggles in industrial setting.</span>
+            <span class="who">Photograph by Sergey Sergeev</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/PPL-08-full.webp" target="_blank" rel="noopener"
+             aria-label="Open PPL-08 at full size">
+            <img src="img/PPL-08.webp" alt="Smiling woman engineer standing confidently in a modern industrial workshop setting." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">PPL-08</b>
+            <span class="alt">Smiling woman engineer standing confidently in a modern industrial workshop setting.</span>
+            <span class="who">Photograph by ThisIsEngineering</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/PPL-09-full.webp" target="_blank" rel="noopener"
+             aria-label="Open PPL-09 at full size">
+            <img src="img/PPL-09.webp" alt="A construction worker operating machinery at an industrial site surrounded by steel structures." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">PPL-09</b>
+            <span class="alt">A construction worker operating machinery at an industrial site surrounded by steel structures.</span>
+            <span class="who">Photograph by Hoang NC</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/PPL-10-full.webp" target="_blank" rel="noopener"
+             aria-label="Open PPL-10 at full size">
+            <img src="img/PPL-10.webp" alt="Two individuals conversing by a small aircraft in a hangar, suggesting aviation and teamwork." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">PPL-10</b>
+            <span class="alt">Two individuals conversing by a small aircraft in a hangar, suggesting aviation and teamwork.</span>
+            <span class="who">Photograph by Patricia Bozan</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/PPL-11-full.webp" target="_blank" rel="noopener"
+             aria-label="Open PPL-11 at full size">
+            <img src="img/PPL-11.webp" alt="Two workers in red helmets assembling metal components inside a factory." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">PPL-11</b>
+            <span class="alt">Two workers in red helmets assembling metal components inside a factory.</span>
+            <span class="who">Photograph by Hoang NC</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/PPL-12-full.webp" target="_blank" rel="noopener"
+             aria-label="Open PPL-12 at full size">
+            <img src="img/PPL-12.webp" alt="Worker in uniform examining sheets in a brightly lit factory environment, focusing on quality." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">PPL-12</b>
+            <span class="alt">Worker in uniform examining sheets in a brightly lit factory environment, focusing on quality.</span>
+            <span class="who">Photograph by Ruslan Alekso</span>
+          </figcaption>
+        </figure></div>
+    </section>
+    <section id="06-about-team">
+      <div class="head">
+        <h2>About</h2>
+        <p class="codes">TEAM-01 to TEAM-12</p>
+        <p class="note">The banner across the top of the about page. The company as engineers and engineering judgment.</p>
+      </div>
+      <div class="grid">
+        <figure class="card">
+          <a href="img/TEAM-01-full.webp" target="_blank" rel="noopener"
+             aria-label="Open TEAM-01 at full size">
+            <img src="img/TEAM-01.webp" alt="Two men in an office discussing and reviewing a tech prototype." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">TEAM-01</b>
+            <span class="alt">Two men in an office discussing and reviewing a tech prototype.</span>
+            <span class="who">Photograph by ThisIsEngineering</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/TEAM-02-full.webp" target="_blank" rel="noopener"
+             aria-label="Open TEAM-02 at full size">
+            <img src="img/TEAM-02.webp" alt="Two engineers reviewing construction blueprints on a table in an office setting." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">TEAM-02</b>
+            <span class="alt">Two engineers reviewing construction blueprints on a table in an office setting.</span>
+            <span class="who">Photograph by ThisIsEngineering</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/TEAM-03-full.webp" target="_blank" rel="noopener"
+             aria-label="Open TEAM-03 at full size">
+            <img src="img/TEAM-03.webp" alt="Engineer working on prosthetic design using specialized software in an office setting." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">TEAM-03</b>
+            <span class="alt">Engineer working on prosthetic design using specialized software in an office setting.</span>
+            <span class="who">Photograph by ThisIsEngineering</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/TEAM-04-full.webp" target="_blank" rel="noopener"
+             aria-label="Open TEAM-04 at full size">
+            <img src="img/TEAM-04.webp" alt="Young architect at a desk working on blueprint designs under lamp light." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">TEAM-04</b>
+            <span class="alt">Young architect at a desk working on blueprint designs under lamp light.</span>
+            <span class="who">Photograph by Ron Lach</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/TEAM-05-full.webp" target="_blank" rel="noopener"
+             aria-label="Open TEAM-05 at full size">
+            <img src="img/TEAM-05.webp" alt="A diverse group of professionals working together in a modern conference room with laptops." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">TEAM-05</b>
+            <span class="alt">A diverse group of professionals working together in a modern conference room with laptops.</span>
+            <span class="who">Photograph by Christina Morillo</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/TEAM-06-full.webp" target="_blank" rel="noopener"
+             aria-label="Open TEAM-06 at full size">
+            <img src="img/TEAM-06.webp" alt="Adults reviewing detailed schematic floor plans indoors for a new building." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">TEAM-06</b>
+            <span class="alt">Adults reviewing detailed schematic floor plans indoors for a new building.</span>
+            <span class="who">Photograph by Thirdman</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/TEAM-07-full.webp" target="_blank" rel="noopener"
+             aria-label="Open TEAM-07 at full size">
+            <img src="img/TEAM-07.webp" alt="Engineer working with CAD software on dual monitors in an office setting." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">TEAM-07</b>
+            <span class="alt">Engineer working with CAD software on dual monitors in an office setting.</span>
+            <span class="who">Photograph by ThisIsEngineering</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/TEAM-08-full.webp" target="_blank" rel="noopener"
+             aria-label="Open TEAM-08 at full size">
+            <img src="img/TEAM-08.webp" alt="Flat lay of architectural blueprints, drawing tools, and stationery on a desk surface." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">TEAM-08</b>
+            <span class="alt">Flat lay of architectural blueprints, drawing tools, and stationery on a desk surface.</span>
+            <span class="who">Photograph by Thirdman</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/TEAM-09-full.webp" target="_blank" rel="noopener"
+             aria-label="Open TEAM-09 at full size">
+            <img src="img/TEAM-09.webp" alt="Top view of colleagues working with papers with schemes while discussing information at table" loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">TEAM-09</b>
+            <span class="alt">Top view of colleagues working with papers with schemes while discussing information at table</span>
+            <span class="who">Photograph by Anna Shvets</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/TEAM-10-full.webp" target="_blank" rel="noopener"
+             aria-label="Open TEAM-10 at full size">
+            <img src="img/TEAM-10.webp" alt="A civil engineer working on a weir design using CAD software on a computer screen in an office setting." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">TEAM-10</b>
+            <span class="alt">A civil engineer working on a weir design using CAD software on a computer screen in an office setting.</span>
+            <span class="who">Photograph by ThisIsEngineering</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/TEAM-11-full.webp" target="_blank" rel="noopener"
+             aria-label="Open TEAM-11 at full size">
+            <img src="img/TEAM-11.webp" alt="A creative workspace with architectural tools, blueprints, and sketches for design projects." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">TEAM-11</b>
+            <span class="alt">A creative workspace with architectural tools, blueprints, and sketches for design projects.</span>
+            <span class="who">Photograph by Tima Miroshnichenko</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/TEAM-12-full.webp" target="_blank" rel="noopener"
+             aria-label="Open TEAM-12 at full size">
+            <img src="img/TEAM-12.webp" alt="Two engineers discuss plans in an office, with one wearing a hard hat and the other holding a clipboard." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">TEAM-12</b>
+            <span class="alt">Two engineers discuss plans in an office, with one wearing a hard hat and the other holding a clipboard.</span>
+            <span class="who">Photograph by AI25.Studio  AI GENERATIVE</span>
+          </figcaption>
+        </figure></div>
+    </section>
+    <section id="07-contact">
+      <div class="head">
+        <h2>Contact</h2>
+        <p class="codes">LOC-01 to LOC-12</p>
+        <p class="note">The banner across the top of the contact page. Bengaluru, an arrival, or a building.</p>
+      </div>
+      <div class="grid">
+        <figure class="card">
+          <a href="img/LOC-01-full.webp" target="_blank" rel="noopener"
+             aria-label="Open LOC-01 at full size">
+            <img src="img/LOC-01.webp" alt="Contemporary building facade with reflective glass windows in an urban environment." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">LOC-01</b>
+            <span class="alt">Contemporary building facade with reflective glass windows in an urban environment.</span>
+            <span class="who">Photograph by Mindaugas U</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/LOC-02-full.webp" target="_blank" rel="noopener"
+             aria-label="Open LOC-02 at full size">
+            <img src="img/LOC-02.webp" alt="A stunning view of colonial architecture in Bengaluru against a dramatic sunset sky." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">LOC-02</b>
+            <span class="alt">A stunning view of colonial architecture in Bengaluru against a dramatic sunset sky.</span>
+            <span class="who">Photograph by Sourabh</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/LOC-03-full.webp" target="_blank" rel="noopener"
+             aria-label="Open LOC-03 at full size">
+            <img src="img/LOC-03.webp" alt="Stylish office reception area with contemporary design in New Delhi." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">LOC-03</b>
+            <span class="alt">Stylish office reception area with contemporary design in New Delhi.</span>
+            <span class="who">Photograph by RAJESH KUMAR    VERMA</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/LOC-04-full.webp" target="_blank" rel="noopener"
+             aria-label="Open LOC-04 at full size">
+            <img src="img/LOC-04.webp" alt="Illuminated office inside a modern glass building exterior, showcasing architecture and workspace design." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">LOC-04</b>
+            <span class="alt">Illuminated office inside a modern glass building exterior, showcasing architecture and workspace design.</span>
+            <span class="who">Photograph by Egor Komarov</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/LOC-05-full.webp" target="_blank" rel="noopener"
+             aria-label="Open LOC-05 at full size">
+            <img src="img/LOC-05.webp" alt="A bustling street market scene in Bengaluru featuring a diverse crowd and fresh produce stall." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">LOC-05</b>
+            <span class="alt">A bustling street market scene in Bengaluru featuring a diverse crowd and fresh produce stall.</span>
+            <span class="who">Photograph by Aditya Oberai</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/LOC-06-full.webp" target="_blank" rel="noopener"
+             aria-label="Open LOC-06 at full size">
+            <img src="img/LOC-06.webp" alt="Spacious office reception area with logo on wall and natural lighting." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">LOC-06</b>
+            <span class="alt">Spacious office reception area with logo on wall and natural lighting.</span>
+            <span class="who">Photograph by Thien  Nhan</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/LOC-07-full.webp" target="_blank" rel="noopener"
+             aria-label="Open LOC-07 at full size">
+            <img src="img/LOC-07.webp" alt="Close-up of a modern highrise building facade showcasing a grid pattern of windows and balconies." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">LOC-07</b>
+            <span class="alt">Close-up of a modern highrise building facade showcasing a grid pattern of windows and balconies.</span>
+            <span class="who">Photograph by Zulfugar Karimov</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/LOC-08-full.webp" target="_blank" rel="noopener"
+             aria-label="Open LOC-08 at full size">
+            <img src="img/LOC-08.webp" alt="Vibrant mannequins showcasing traditional Indian lehenga outfits in Bengaluru&#x27;s bustling market street." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">LOC-08</b>
+            <span class="alt">Vibrant mannequins showcasing traditional Indian lehenga outfits in Bengaluru&#x27;s bustling market street.</span>
+            <span class="who">Photograph by Aditya Oberai</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/LOC-09-full.webp" target="_blank" rel="noopener"
+             aria-label="Open LOC-09 at full size">
+            <img src="img/LOC-09.webp" alt="Elegant office reception featuring modern furniture and vibrant wall art in Baghdad." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">LOC-09</b>
+            <span class="alt">Elegant office reception featuring modern furniture and vibrant wall art in Baghdad.</span>
+            <span class="who">Photograph by khezez  | خزاز</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/LOC-10-full.webp" target="_blank" rel="noopener"
+             aria-label="Open LOC-10 at full size">
+            <img src="img/LOC-10.webp" alt="A contemporary building with reflective windows in an urban setting under a cloudy sky." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">LOC-10</b>
+            <span class="alt">A contemporary building with reflective windows in an urban setting under a cloudy sky.</span>
+            <span class="who">Photograph by Adrien Olichon</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/LOC-11-full.webp" target="_blank" rel="noopener"
+             aria-label="Open LOC-11 at full size">
+            <img src="img/LOC-11.webp" alt="Colorful street market scene in Bengaluru featuring ethnic garments and bustling crowd, capturing urban life." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">LOC-11</b>
+            <span class="alt">Colorful street market scene in Bengaluru featuring ethnic garments and bustling crowd, capturing urban life.</span>
+            <span class="who">Photograph by Aditya Oberai</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/LOC-12-full.webp" target="_blank" rel="noopener"
+             aria-label="Open LOC-12 at full size">
+            <img src="img/LOC-12.webp" alt="A woman receptionist using a tablet at a modern office reception desk." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">LOC-12</b>
+            <span class="alt">A woman receptionist using a tablet at a modern office reception desk.</span>
+            <span class="who">Photograph by Cedric Fauntleroy</span>
+          </figcaption>
+        </figure></div>
+    </section>
+    <section id="08-texture-detail">
+      <div class="head">
+        <h2>Supporting detail</h2>
+        <p class="codes">DTL-01 to DTL-12</p>
+        <p class="note">Small images used between sections for texture. Materials, tooling, close detail. Two or three.</p>
+      </div>
+      <div class="grid">
+        <figure class="card">
+          <a href="img/DTL-01-full.webp" target="_blank" rel="noopener"
+             aria-label="Open DTL-01 at full size">
+            <img src="img/DTL-01.webp" alt="High-resolution image of a jet engine turbine blade, showcasing intricate details and curvature." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">DTL-01</b>
+            <span class="alt">High-resolution image of a jet engine turbine blade, showcasing intricate details and curvature.</span>
+            <span class="who">Photograph by Jeffry Surianto</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/DTL-02-full.webp" target="_blank" rel="noopener"
+             aria-label="Open DTL-02 at full size">
+            <img src="img/DTL-02.webp" alt="Close-up of a metallic surface with circular patterns creating an abstract texture." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">DTL-02</b>
+            <span class="alt">Close-up of a metallic surface with circular patterns creating an abstract texture.</span>
+            <span class="who">Photograph by wal_ 172619</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/DTL-03-full.webp" target="_blank" rel="noopener"
+             aria-label="Open DTL-03 at full size">
+            <img src="img/DTL-03.webp" alt="Black and white photo of an airplane parked inside a large hangar with industrial lighting." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">DTL-03</b>
+            <span class="alt">Black and white photo of an airplane parked inside a large hangar with industrial lighting.</span>
+            <span class="who">Photograph by Ricky Esquivel</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/DTL-04-full.webp" target="_blank" rel="noopener"
+             aria-label="Open DTL-04 at full size">
+            <img src="img/DTL-04.webp" alt="Detailed view of machinery part displaying &#x27;Made in Japan&#x27;, highlighting precision engineering." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">DTL-04</b>
+            <span class="alt">Detailed view of machinery part displaying &#x27;Made in Japan&#x27;, highlighting precision engineering.</span>
+            <span class="who">Photograph by Johanna</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/DTL-05-full.webp" target="_blank" rel="noopener"
+             aria-label="Open DTL-05 at full size">
+            <img src="img/DTL-05.webp" alt="Detailed black and white image of an airplane turbine engine showcasing blades and craftsmanship." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">DTL-05</b>
+            <span class="alt">Detailed black and white image of an airplane turbine engine showcasing blades and craftsmanship.</span>
+            <span class="who">Photograph by Pixabay</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/DTL-06-full.webp" target="_blank" rel="noopener"
+             aria-label="Open DTL-06 at full size">
+            <img src="img/DTL-06.webp" alt="Close-up of a textured metal surface featuring a diamond plate pattern." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">DTL-06</b>
+            <span class="alt">Close-up of a textured metal surface featuring a diamond plate pattern.</span>
+            <span class="who">Photograph by Malcoln Oliveira</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/DTL-07-full.webp" target="_blank" rel="noopener"
+             aria-label="Open DTL-07 at full size">
+            <img src="img/DTL-07.webp" alt="A classic Swissair aircraft featuring twin propellers on a cloudy day in Cambridgeshire." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">DTL-07</b>
+            <span class="alt">A classic Swissair aircraft featuring twin propellers on a cloudy day in Cambridgeshire.</span>
+            <span class="who">Photograph by Wu Ming</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/DTL-08-full.webp" target="_blank" rel="noopener"
+             aria-label="Open DTL-08 at full size">
+            <img src="img/DTL-08.webp" alt="High-precision milling machine cutting a metal piece, showcasing industrial machinery." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">DTL-08</b>
+            <span class="alt">High-precision milling machine cutting a metal piece, showcasing industrial machinery.</span>
+            <span class="who">Photograph by Daniel Smyth</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/DTL-09-full.webp" target="_blank" rel="noopener"
+             aria-label="Open DTL-09 at full size">
+            <img src="img/DTL-09.webp" alt="Detailed grayscale image of a jet engine turbine highlighting its intricate design." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">DTL-09</b>
+            <span class="alt">Detailed grayscale image of a jet engine turbine highlighting its intricate design.</span>
+            <span class="who">Photograph by Lee Mills</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/DTL-10-full.webp" target="_blank" rel="noopener"
+             aria-label="Open DTL-10 at full size">
+            <img src="img/DTL-10.webp" alt="Detailed view of a diamond plate metal surface showcasing its rugged pattern." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">DTL-10</b>
+            <span class="alt">Detailed view of a diamond plate metal surface showcasing its rugged pattern.</span>
+            <span class="who">Photograph by Chris F</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/DTL-11-full.webp" target="_blank" rel="noopener"
+             aria-label="Open DTL-11 at full size">
+            <img src="img/DTL-11.webp" alt="A classic Swissair aircraft flying above the scenic Swiss Alps in clear daylight." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">DTL-11</b>
+            <span class="alt">A classic Swissair aircraft flying above the scenic Swiss Alps in clear daylight.</span>
+            <span class="who">Photograph by Joël Super</span>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <a href="img/DTL-12-full.webp" target="_blank" rel="noopener"
+             aria-label="Open DTL-12 at full size">
+            <img src="img/DTL-12.webp" alt="Detailed black and white image of interlocking metal gears showcasing industrial mechanics." loading="lazy" decoding="async"
+                 width="700" height="467">
+          </a>
+          <figcaption>
+            <b class="ref">DTL-12</b>
+            <span class="alt">Detailed black and white image of interlocking metal gears showcasing industrial mechanics.</span>
+            <span class="who">Photograph by Flickr</span>
+          </figcaption>
+        </figure></div>
+    </section>
+
+  <footer>
+    <p>96 photographs. Sourced from Pexels, licensed for commercial use
+    with no attribution required. Photographer names are listed for courtesy.</p>
+    <p>Prepared for MRS Aircraft Private Limited, Bengaluru, Karnataka.</p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1473 @@
+/* =============================================================================
+   MRS Aircraft Private Limited
+   Design system. Hand-written CSS, no framework, no build step.
+
+   Design read: credibility-first B2B site for an Indian aviation engineering
+   company, addressed to procurement and to job candidates. Restrained
+   engineering-editorial language. Soft Structuralism vibe archetype tinted to
+   the brand navy and gold; asymmetrical bento as the primary layout archetype.
+
+   Dials      DESIGN_VARIANCE 6 · MOTION_INTENSITY 5 · VISUAL_DENSITY 4
+   Type       Geist / Geist Mono
+   Shape lock surfaces 14px · controls 8px · tags full pill. Nothing else.
+   Accent     one, gold, used identically on every page.
+   Theme      auto (prefers-color-scheme). Navy is a branded surface used for
+              the nav, the footer and at most one band per page. It is not a
+              theme flip: .band-dark redefines the same semantic tokens locally
+              so everything inside keeps working in both modes.
+   ========================================================================== */
+
+/* ---------------------------------------------------------------- 1. tokens */
+
+:root {
+  color-scheme: light dark;
+
+  /* Brand ramps. Only these carry a hue name; everything else is semantic. */
+  --navy-950: #061727;
+  --navy-900: #0b2a4a;
+  --navy-800: #103a63;
+  --navy-700: #16496f;
+  --navy-600: #1d5c8a;
+
+  --gold-700: #8a6a25;
+  --gold-600: #a8842f;
+  --gold-500: #c8a24a;
+  --gold-400: #dfbe6b;
+  --gold-300: #ecd79f;
+
+  /* Neutrals, cool-tinted to sit with the navy. One grey family, no warm/cool
+     mixing anywhere on the site. */
+  --n-0:   #ffffff;
+  --n-25:  #fafbfc;
+  --n-50:  #f4f6f9;
+  --n-100: #e9edf3;
+  --n-200: #dbe1ea;
+  --n-300: #c2cad6;
+  --n-400: #98a3b4;
+  --n-500: #6b7889;
+  --n-600: #4e5a6b;
+  --n-700: #3a4554;
+  --n-900: #16202e;
+
+  /* Semantic surface + text. These are the only colours components reference. */
+  --bg:            var(--n-0);
+  --bg-sunken:     var(--n-50);
+  --surface:       var(--n-0);
+  --surface-2:     var(--n-25);
+  --surface-shell: var(--n-100);
+
+  --text:          #16202e;
+  --text-muted:    #55627a;
+  --text-faint:    #7d8798;
+
+  --border:        rgba(11, 42, 74, 0.10);
+  --border-strong: rgba(11, 42, 74, 0.20);
+  --hairline:      rgba(11, 42, 74, 0.07);
+
+  --accent:        var(--gold-600);   /* passes AA on white for text */
+  --accent-solid:  var(--gold-500);   /* fills, rules, marks */
+  --accent-ink:    var(--navy-950);   /* text on an accent fill */
+  --accent-wash:   rgba(200, 162, 74, 0.11);
+
+  --focus:         var(--navy-600);
+
+  /* The disc behind the aircraft in the brand mark. A variable because it has
+     to lift off a dark header photograph as well as off white. */
+  --brand-disc:    var(--navy-900);
+
+  --ok:    #15803d;
+  --error: #b3261e;
+  --error-wash: rgba(179, 38, 30, 0.07);
+
+  /* Depth. Tinted to the background hue, never pure black. */
+  --lift-1: 0 1px 2px rgba(11, 42, 74, 0.05);
+  --lift-2: 0 4px 16px -4px rgba(11, 42, 74, 0.10), 0 2px 6px -2px rgba(11, 42, 74, 0.06);
+  --lift-3: 0 18px 44px -14px rgba(11, 42, 74, 0.20), 0 6px 14px -6px rgba(11, 42, 74, 0.08);
+  --inner-hi: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+
+  /* Shape lock */
+  --r-surface: 14px;
+  --r-inner:   10px;   /* concentric: --r-surface minus the shell padding */
+  --r-control: 8px;
+  --r-pill:    999px;
+
+  /* Type */
+  --font: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SFMono-Regular", "Cascadia Mono", monospace;
+
+  --step--1: 0.8125rem;
+  --step-0:  1.0625rem;
+  --step-1:  clamp(1.125rem, 1.06rem + 0.3vw, 1.3125rem);
+  --step-2:  clamp(1.375rem, 1.24rem + 0.62vw, 1.75rem);
+  --step-3:  clamp(1.75rem, 1.46rem + 1.35vw, 2.625rem);
+  --step-4:  clamp(2.125rem, 1.6rem + 2.4vw, 3.5rem);
+  --step-5:  clamp(2.5rem, 1.55rem + 4.3vw, 5rem);
+
+  /* Rhythm */
+  --shell:    1240px;
+  --shell-wide: 1440px;
+  --gutter:   clamp(1.25rem, 0.9rem + 1.6vw, 2.5rem);
+  --section:  clamp(4.5rem, 3rem + 6vw, 8.5rem);
+  --section-tight: clamp(3.25rem, 2.4rem + 3.4vw, 5.5rem);
+
+  /* Motion. One curve for entrances, one for interface response. */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-io:  cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* Layers. Three, documented, nothing arbitrary. */
+  --z-grain: 5;
+  --z-nav:   50;
+  --z-modal: 90;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:            #0a121c;
+    --bg-sunken:     #070e17;
+    --surface:       #101b28;
+    --surface-2:     #0d1621;
+    --surface-shell: #16222f;
+
+    --text:          #e8edf4;
+    --text-muted:    #a3b0c2;
+    --text-faint:    #7c8899;
+
+    --border:        rgba(160, 190, 225, 0.14);
+    --border-strong: rgba(160, 190, 225, 0.26);
+    --hairline:      rgba(160, 190, 225, 0.09);
+
+    --accent:        var(--gold-400);
+    --accent-solid:  var(--gold-500);
+    --accent-ink:    #08131f;
+    --accent-wash:   rgba(200, 162, 74, 0.14);
+
+    --focus:         var(--gold-400);
+
+    --ok:    #4ade80;
+    --error: #f2a49c;
+    --error-wash: rgba(242, 164, 156, 0.10);
+
+    --lift-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --lift-2: 0 4px 16px -4px rgba(0, 0, 0, 0.5);
+    --lift-3: 0 18px 44px -14px rgba(0, 0, 0, 0.65);
+    --inner-hi: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+}
+
+/* Navy band. Not a theme flip: the same semantic tokens, redefined for one
+   branded surface, so every component inside keeps its contract. */
+.band-dark {
+  --bg:            var(--navy-900);
+  --bg-sunken:     var(--navy-950);
+  --surface:       rgba(255, 255, 255, 0.05);
+  --surface-2:     rgba(255, 255, 255, 0.03);
+  --surface-shell: rgba(255, 255, 255, 0.06);
+  --text:          #f2f6fb;
+  --text-muted:    #b4c4d8;
+  --text-faint:    #8fa2b9;
+  --border:        rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.28);
+  --hairline:      rgba(255, 255, 255, 0.09);
+  --accent:        var(--gold-400);
+  --accent-solid:  var(--gold-500);
+  --accent-ink:    var(--navy-950);
+  --accent-wash:   rgba(200, 162, 74, 0.16);
+  --focus:         var(--gold-400);
+  --inner-hi:      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ----------------------------------------------------------------- 2. reset */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* The nav is sticky and would cover an anchored heading otherwise. */
+  scroll-padding-top: 6.5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 620;
+  line-height: 1.08;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-2); letter-spacing: -0.014em; line-height: 1.2; }
+h4 { font-size: var(--step-1); letter-spacing: -0.01em; line-height: 1.3; }
+
+p { margin: 0; text-wrap: pretty; }
+ul, ol { margin: 0; padding: 0; }
+img, svg, video, canvas { display: block; max-width: 100%; }
+img { height: auto; }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { color: var(--text); }
+
+strong, b { font-weight: 620; }
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+::selection { background: var(--accent-wash); color: var(--text); }
+
+/* Numbers that sit in columns or get compared must not jitter. */
+.tnum, table, .spec, .salary { font-variant-numeric: tabular-nums; }
+
+/* ---------------------------------------------------------- 3. helpers */
+
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.shell-wide { max-width: var(--shell-wide); }
+
+.section { padding-block: var(--section); }
+.section-tight { padding-block: var(--section-tight); }
+.sunken { background: var(--bg-sunken); }
+
+.stack > * + * { margin-top: var(--gap, 1.25rem); }
+
+.lede {
+  font-size: var(--step-1);
+  line-height: 1.55;
+  color: var(--text-muted);
+  max-width: 60ch;
+  letter-spacing: -0.006em;
+}
+.body-muted { color: var(--text-muted); }
+.measure { max-width: 65ch; }
+.small { font-size: var(--step--1); color: var(--text-muted); line-height: 1.55; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+.skip {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  z-index: var(--z-modal);
+  padding: 0.75rem 1.15rem;
+  border-radius: var(--r-control);
+  background: var(--accent-solid);
+  color: var(--accent-ink);
+  font-weight: 600;
+  transform: translateY(-160%);
+  transition: transform 0.2s var(--ease-out);
+}
+.skip:focus-visible { transform: none; color: var(--accent-ink); }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Fixed, pointer-events-none grain. Never on a scrolling container. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-grain);
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: radial-gradient(circle at 1px 1px, #0b2a4a 1px, transparent 0);
+  background-size: 3px 3px;
+}
+@media (prefers-color-scheme: dark) {
+  .grain { mix-blend-mode: screen; opacity: 0.05; background-image: radial-gradient(circle at 1px 1px, #cddcf0 1px, transparent 0); }
+}
+
+/* ---------------------------------------------------------------- 4. motion */
+
+/* One entrance. Elements start low, soft and transparent; the observer in
+   mrs.js adds .in as they arrive, sequencing content in reading order.
+
+   Gated on .js, set by an inline script in <head>. Without JavaScript the
+   observer never runs, so the hidden state must never be applied at all:
+   content that depends on script to become visible is content that can
+   disappear. */
+.js .reveal {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  filter: blur(6px);
+  transition:
+    opacity 0.85s var(--ease-out),
+    transform 0.85s var(--ease-out),
+    filter 0.85s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms);
+  will-change: transform, opacity;
+}
+.js .reveal.in {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; filter: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ------------------------------------------------------------- 5. buttons */
+
+.btn {
+  --btn-bg: var(--accent-solid);
+  --btn-fg: var(--accent-ink);
+  --btn-bd: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.8rem 1rem 0.8rem 1.35rem;
+  border: 1.5px solid var(--btn-bd);
+  border-radius: var(--r-control);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 560;
+  letter-spacing: -0.006em;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 0.25s var(--ease-io),
+    border-color 0.25s var(--ease-io),
+    color 0.25s var(--ease-io),
+    box-shadow 0.25s var(--ease-io),
+    transform 0.18s var(--ease-io);
+}
+.btn:hover { color: var(--btn-fg); }
+.btn:active { transform: scale(0.985); }
+
+/* Button-in-button: the arrow never sits naked beside the label. */
+.btn .tip {
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  flex: none;
+  border-radius: var(--r-pill);
+  background: rgba(0, 0, 0, 0.09);
+  transition: transform 0.35s var(--ease-io), background-color 0.25s var(--ease-io);
+}
+.btn .tip svg { width: 0.85rem; height: 0.85rem; }
+.btn:hover .tip { transform: translate(2px, -1px) scale(1.06); }
+
+.btn-primary { box-shadow: var(--lift-1); }
+.btn-primary:hover { --btn-bg: var(--gold-400); box-shadow: var(--lift-2); }
+
+.btn-secondary {
+  --btn-bg: transparent;
+  --btn-fg: var(--text);
+  --btn-bd: var(--border-strong);
+}
+.btn-secondary .tip { background: var(--accent-wash); }
+.btn-secondary:hover { --btn-bd: var(--accent-solid); --btn-bg: var(--accent-wash); }
+
+.btn-quiet {
+  --btn-bg: transparent;
+  --btn-fg: var(--text);
+  --btn-bd: transparent;
+  padding-inline: 0.35rem;
+}
+.btn-quiet .tip { background: var(--accent-wash); }
+.btn-quiet:hover { --btn-fg: var(--accent); }
+
+.btn[disabled], .btn[aria-disabled="true"] { opacity: 0.55; pointer-events: none; }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+/* Text link that behaves like a button target. */
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 560;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  color: var(--accent);
+}
+.arrow-link svg { width: 0.85rem; height: 0.85rem; transition: transform 0.35s var(--ease-io); }
+.arrow-link:hover { color: var(--text); }
+.arrow-link:hover svg { transform: translateX(3px); }
+
+/* ------------------------------------------------------------------ 6. nav */
+
+.nav-wrap {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  padding-top: clamp(0.5rem, 0.2rem + 0.9vw, 1rem);
+  padding-bottom: 0.5rem;
+  /* Floating, not glued edge to edge. */
+  transition: padding-top 0.4s var(--ease-io);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  height: 64px;
+  /* Asymmetric on purpose. The brand link on the left has 0.6rem of its own
+     padding, so an equal inset here would leave the CTA looking pushed into
+     the corner. This is the optical match, not the measured one. */
+  padding-inline: 0.6rem 1.1rem;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  transition:
+    background-color 0.4s var(--ease-io),
+    border-color 0.4s var(--ease-io),
+    box-shadow 0.4s var(--ease-io),
+    backdrop-filter 0.4s var(--ease-io);
+}
+
+/* Condensed state, toggled by an IntersectionObserver sentinel. backdrop-filter
+   is only ever on this fixed-position element, never on scrolling content. */
+.is-stuck .nav {
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  border-color: var(--border);
+  box-shadow: var(--lift-2);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--r-control);
+  text-decoration: none;
+  color: var(--text);
+}
+.brand-mark { width: 40px; height: 28px; flex: none; }
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.brand-name {
+  font-size: 1.0625rem;
+  font-weight: 660;
+  letter-spacing: -0.014em;
+}
+.brand-sub {
+  font-family: var(--mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-top: 3px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  list-style: none;
+}
+.nav-links a {
+  position: relative;
+  display: block;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--r-control);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s var(--ease-io), background-color 0.2s var(--ease-io);
+}
+.nav-links a:hover { color: var(--text); background: var(--accent-wash); }
+.nav-links a[aria-current="page"] { color: var(--text); }
+.nav-links a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0.7rem;
+  right: 0.7rem;
+  bottom: 0.24rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent-solid);
+}
+
+.nav-cta { display: flex; align-items: center; gap: 0.5rem; }
+.nav-cta .btn { padding-block: 0.65rem; font-size: 0.875rem; }
+
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-control);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.nav-toggle span {
+  display: block;
+  width: 17px;
+  height: 1.5px;
+  margin: 0 auto;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.4s var(--ease-io), opacity 0.2s linear;
+}
+.nav-toggle span + span { margin-top: 4.5px; }
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* Full-screen menu. Staggered reveal, links slide up out of a mask. */
+.nav-panel {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: none;
+  flex-direction: column;
+  padding: 6rem var(--gutter) calc(2rem + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(28px) saturate(150%);
+  -webkit-backdrop-filter: blur(28px) saturate(150%);
+  overscroll-behavior: contain;
+  overflow-y: auto;
+}
+.nav-panel[data-open] { display: flex; }
+.nav-panel ul { list-style: none; display: flex; flex-direction: column; }
+.nav-panel li { overflow: hidden; border-bottom: 1px solid var(--hairline); }
+.nav-panel a {
+  display: block;
+  padding: 1.05rem 0.25rem;
+  font-size: var(--step-2);
+  font-weight: 580;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-decoration: none;
+  transform: translateY(110%);
+}
+.nav-panel[data-open] a { animation: menu-in 0.65s var(--ease-out) forwards; animation-delay: calc(var(--i) * 55ms); }
+.nav-panel .btn { margin-top: 2rem; align-self: flex-start; }
+
+@keyframes menu-in { to { transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .nav-panel a { transform: none; animation: none; }
+}
+
+@media (max-width: 1023px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  .nav-cta .btn-primary { display: none; }
+}
+
+/* --------------------------------------------------------------- 7. surfaces */
+
+/* Double bezel. Outer shell is a machined tray, inner core is the plate that
+   sits in it, with a concentric radius. Used for every major card. */
+.bezel {
+  padding: 4px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-surface);
+  background: var(--surface-shell);
+  transition: transform 0.5s var(--ease-io), box-shadow 0.5s var(--ease-io), border-color 0.4s var(--ease-io);
+}
+.bezel > .core {
+  height: 100%;
+  border-radius: var(--r-inner);
+  background: var(--surface);
+  box-shadow: var(--inner-hi);
+  overflow: hidden;
+}
+a.bezel, .bezel-hover { will-change: transform; }
+a.bezel:hover, .bezel-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--lift-3);
+  border-color: var(--border-strong);
+}
+a.bezel { text-decoration: none; color: inherit; display: block; }
+a.bezel:hover { color: inherit; }
+
+.pad { padding: clamp(1.4rem, 1.1rem + 1vw, 2.1rem); }
+
+/* Media inside a core. Fixed ratio so nothing shifts while loading. */
+.media {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-sunken);
+}
+.media img { width: 100%; height: 100%; object-fit: cover; }
+.media-16-9 { aspect-ratio: 16 / 9; }
+.media-4-3  { aspect-ratio: 4 / 3; }
+.media-21-9 { aspect-ratio: 21 / 9; }
+.media-1-1  { aspect-ratio: 1 / 1; }
+
+.media img { transition: transform 1.2s var(--ease-io), filter 1.2s var(--ease-io); }
+a.bezel:hover .media img, .bezel-hover:hover .media img { transform: scale(1.045); }
+
+.tag {
+  display: inline-block;
+  padding: 0.28rem 0.7rem;
+  border-radius: var(--r-pill);
+  background: var(--accent-wash);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------- 8. layouts */
+
+.grid { display: grid; gap: clamp(1rem, 0.7rem + 1.1vw, 1.75rem); }
+
+/* Asymmetrical bento. Exactly as many cells as there is content for. */
+.bento { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+.bento > .b-lead { grid-column: span 12; }
+.bento > .b-half { grid-column: span 12; }
+.bento > .b-third { grid-column: span 12; }
+
+@media (min-width: 768px) {
+  .bento > .b-half { grid-column: span 6; }
+  .bento > .b-third { grid-column: span 4; }
+}
+@media (min-width: 1024px) {
+  .bento > .b-lead { grid-column: span 7; grid-row: span 2; }
+  .bento > .b-half { grid-column: span 5; }
+  /* The lead cell is twice as tall as a half cell. Let its media take the
+     slack rather than leaving a void under a fixed 4:3 box. */
+  .bento > .b-lead .media { aspect-ratio: auto; flex: 1 1 auto; min-height: 20rem; }
+}
+
+/* Editorial split. Text one side, asset the other, generous negative space. */
+.split {
+  display: grid;
+  gap: clamp(2rem, 1.2rem + 3vw, 4.5rem);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+  .split-narrow { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .split.flip > :first-child { order: 2; }
+  /* Long-form sections read better top-aligned; centring leaves the shorter
+     column floating against a much taller neighbour. */
+  .split-top { align-items: start; }
+  /* Form pages: the form is the page, the sidebar is support. */
+  .split-form { grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.85fr); align-items: start; }
+}
+
+.cols-2, .cols-3 { display: grid; gap: clamp(1.25rem, 0.9rem + 1.4vw, 2.25rem); }
+@media (min-width: 700px)  { .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 700px)  { .cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+.section-head { display: grid; gap: 1rem; max-width: 46ch; margin-bottom: clamp(2.25rem, 1.6rem + 2.4vw, 4rem); }
+
+/* ------------------------------------------------------------------ 9. hero */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(88svh, 820px);
+  margin-top: calc(-64px - clamp(0.5rem, 0.2rem + 0.9vw, 1rem) - 0.5rem);
+  padding-top: calc(9rem + env(safe-area-inset-top));
+  padding-bottom: clamp(3rem, 2rem + 4vw, 5.5rem);
+  overflow: hidden;
+  color: #f4f8fd;
+}
+.hero-media { position: absolute; inset: 0; z-index: -2; }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; }
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(6, 23, 39, 0.86) 0%, rgba(6, 23, 39, 0.45) 34%, rgba(6, 23, 39, 0.72) 78%, rgba(6, 23, 39, 0.92) 100%),
+    radial-gradient(120% 90% at 78% 12%, rgba(29, 92, 138, 0.42), transparent 62%);
+}
+.hero .eyebrow { color: var(--gold-300); }
+.hero h1 { font-size: var(--step-5); max-width: 15ch; }
+.hero p { color: #cfdcec; max-width: 46ch; font-size: var(--step-1); line-height: 1.55; }
+.hero .btn-secondary { --btn-fg: #f4f8fd; --btn-bd: rgba(255, 255, 255, 0.4); }
+.hero .btn-secondary .tip { background: rgba(255, 255, 255, 0.15); }
+.hero .btn-secondary:hover { --btn-bd: var(--gold-400); --btn-bg: rgba(255, 255, 255, 0.1); }
+
+/* Line-by-line mask reveal. The one piece of choreography on the page: it
+   sequences the headline so the reader lands on the value proposition first. */
+.line { display: block; overflow: hidden; padding-bottom: 0.06em; }
+.line > span { display: block; transform: translateY(105%); animation: line-up 1s var(--ease-out) forwards; }
+.line:nth-child(1) > span { animation-delay: 0.06s; }
+.line:nth-child(2) > span { animation-delay: 0.16s; }
+.line:nth-child(3) > span { animation-delay: 0.26s; }
+@keyframes line-up { to { transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .line > span { transform: none; animation: none; }
+}
+
+/* --------------------------------------------- hero atmosphere + parallax */
+
+/* An animated layer behind the headline: a drifting graticule, two route arcs
+   that draw themselves, three waypoints that breathe.
+
+   Deliberately not three.js. This sits at the fold, where the hero photograph
+   is already the LCP element, so the background has to cost effectively
+   nothing: inline SVG animated entirely in CSS, no module to fetch and no
+   JavaScript to start it. */
+.hero { --hero-p: 0; }
+.hero-media { z-index: -3; }
+.hero::after { z-index: -2; }
+.hero-air {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-air svg { display: block; width: 100%; height: 100%; }
+
+/* Two graticules, each travelling exactly one pitch of its own pattern so the
+   loop has no seam, at different pitches and rates so they read as depth. */
+.air-grid { will-change: transform; }
+.air-far  { animation: air-drift-far 62s linear infinite; }
+.air-near { animation: air-drift-near 40s linear infinite; }
+@keyframes air-drift-far  { to { transform: translateX(-100px); } }
+@keyframes air-drift-near { to { transform: translateX(-200px); } }
+
+/* Haze. Alternating rather than looping: the bands are soft at both ends, and
+   sliding back and forth means there is no wrap to hide. */
+.air-haze-1 { animation: air-haze-a 34s var(--ease-io) infinite alternate; }
+.air-haze-2 { animation: air-haze-b 46s var(--ease-io) infinite alternate; }
+@keyframes air-haze-a {
+  from { transform: translateX(0); }
+  to   { transform: translateX(700px); }
+}
+@keyframes air-haze-b {
+  from { transform: translateX(620px); }
+  to   { transform: translateX(-140px); }
+}
+
+/* Route arcs, drawn on with pathLength normalised to 1 so one keyframe set
+   fits both paths whatever their real length. */
+.air-route { stroke-dasharray: 1; animation: air-draw 21s var(--ease-io) infinite; }
+.air-route:nth-of-type(2) { animation-duration: 29s; animation-delay: -11s; }
+@keyframes air-draw {
+  0%   { stroke-dashoffset: 1; opacity: 0; }
+  10%  { opacity: 1; }
+  55%  { stroke-dashoffset: 0; opacity: 1; }
+  85%  { stroke-dashoffset: -1; opacity: 0; }
+  100% { stroke-dashoffset: -1; opacity: 0; }
+}
+
+.air-point { animation: air-pulse 7s var(--ease-io) infinite; }
+.air-point:nth-of-type(2) { animation-delay: -2.4s; }
+.air-point:nth-of-type(3) { animation-delay: -4.8s; }
+@keyframes air-pulse {
+  0%, 100% { opacity: 0.25; }
+  50%      { opacity: 0.9; }
+}
+
+/* Range rings out of the middle waypoint. fill-box is what puts the origin at
+   the circle's own centre; the default view-box would scale it about the corner
+   of the whole drawing. */
+.air-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: air-ring 9s linear infinite;
+}
+.air-rings > g:nth-of-type(2) .air-ring { animation-delay: -3s; }
+.air-rings > g:nth-of-type(3) .air-ring { animation-delay: -6s; }
+@keyframes air-ring {
+  from { transform: scale(0.25); opacity: 0.5; }
+  to   { transform: scale(2.1); opacity: 0; }
+}
+
+/* Two aircraft crossing, each fading in and out at the frame edge rather than
+   popping. The contrail travels inside the same group, so it stays attached. */
+.air-flight { will-change: transform; }
+.air-flight-1 { animation: air-fly-1 46s linear infinite; }
+.air-flight-2 { animation: air-fly-2 74s linear infinite -26s; }
+@keyframes air-fly-1 {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  6%   { opacity: 0.85; }
+  92%  { opacity: 0.85; }
+  100% { transform: translate(2140px, -96px); opacity: 0; }
+}
+@keyframes air-fly-2 {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  8%   { opacity: 0.5; }
+  90%  { opacity: 0.5; }
+  100% { transform: translate(2160px, -180px); opacity: 0; }
+}
+
+/* Heading tape. Every fifth tick is taller, so the pattern repeats every five
+   pitches and that is how far the group travels. */
+.air-tape { animation: air-tape 30s linear infinite; }
+@keyframes air-tape { to { transform: translateX(-200px); } }
+
+/* Scroll hand-over. The photograph, the graticule and the copy leave at three
+   different rates, so the first screen passes to the second instead of sliding
+   away as one flat sheet. --hero-p is written by mrs.js: 0 at the top of the
+   hero, 1 once it has fully left. With no JavaScript it stays 0 and every one
+   of these resolves to its resting value. */
+.hero-media {
+  transform: translate3d(0, calc(var(--hero-p) * 4.5%), 0)
+             scale(calc(1 + var(--hero-p) * 0.12));
+  will-change: transform;
+}
+.hero-air {
+  opacity: calc(1 - var(--hero-p) * 0.95);
+  transform: translate3d(0, calc(var(--hero-p) * -3%), 0);
+}
+.hero > .shell {
+  transform: translate3d(0, calc(var(--hero-p) * -2.5rem), 0);
+  opacity: calc(1 - var(--hero-p) * 0.85);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* One still frame. Everything that moved holds its resting position, and the
+     two aircraft and the range rings are removed rather than parked, because a
+     parked aeroplane off the left edge is just a stray mark. */
+  .air-grid, .air-point, .air-haze, .air-tape { animation: none; }
+  .air-route { animation: none; stroke-dashoffset: 0; opacity: 0.5; }
+  .air-flights, .air-rings { display: none; }
+  .hero-media, .hero-air, .hero > .shell { transform: none; opacity: 1; }
+}
+
+/* The nav floats over the header photograph on most pages and is transparent
+   until it condenses. In dark mode its text is already light; in light mode it
+   would be near-black on a near-black scrim. Invert it while it is over the
+   header and let .is-stuck hand it back. */
+body.dark-head .nav-wrap:not(.is-stuck) {
+  --brand-disc: var(--navy-700);
+}
+body.dark-head .nav-wrap:not(.is-stuck) .brand { color: #f4f8fd; }
+body.dark-head .nav-wrap:not(.is-stuck) .brand-sub { color: rgba(244, 248, 253, 0.6); }
+body.dark-head .nav-wrap:not(.is-stuck) .nav-links a { color: rgba(244, 248, 253, 0.78); }
+body.dark-head .nav-wrap:not(.is-stuck) .nav-links a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+body.dark-head .nav-wrap:not(.is-stuck) .nav-links a[aria-current="page"] { color: #fff; }
+
+/* Page header for interior pages. */
+.page-head {
+  position: relative;
+  isolation: isolate;
+  margin-top: calc(-64px - clamp(0.5rem, 0.2rem + 0.9vw, 1rem) - 0.5rem);
+  padding-top: calc(10rem + env(safe-area-inset-top));
+  padding-bottom: clamp(3rem, 2.2rem + 3vw, 5rem);
+  overflow: hidden;
+  color: #f4f8fd;
+}
+.page-head-media { position: absolute; inset: 0; z-index: -2; }
+.page-head-media img { width: 100%; height: 100%; object-fit: cover; }
+.page-head::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(6, 23, 39, 0.9) 0%, rgba(6, 23, 39, 0.62) 45%, rgba(6, 23, 39, 0.86) 100%);
+}
+.page-head .eyebrow { color: var(--gold-300); }
+.page-head p { color: #cfdcec; }
+
+/* Plain header, no photograph, for legal and utility pages. */
+.page-head-plain {
+  padding-top: clamp(3rem, 2rem + 4vw, 5rem);
+  padding-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* ------------------------------------------------------- 10. statement rows */
+
+/* Four short claims across. Plain layout, hairlines, no card boxes. */
+.claims {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+.claims > div {
+  padding: clamp(1.5rem, 1.2rem + 1vw, 2.25rem) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+@media (min-width: 640px) {
+  .claims { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(1.5rem, 1rem + 2vw, 3rem); }
+}
+@media (min-width: 1024px) {
+  .claims { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .claims > div { border-bottom: 0; }
+}
+.claims h3 { font-size: var(--step-1); margin-bottom: 0.6rem; }
+.claims p { color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6; }
+
+/* Value list, two columns, hairline between rows only. */
+.values { display: grid; gap: 0; }
+@media (min-width: 820px) { .values { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(2rem, 1rem + 3vw, 4rem); } }
+.values > div { padding-block: clamp(1.25rem, 1rem + 0.8vw, 1.75rem); border-bottom: 1px solid var(--hairline); }
+.values h3 { font-size: var(--step-1); margin-bottom: 0.45rem; }
+.values p { color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6; }
+
+/* ------------------------------------------------------ 11. exploded engine */
+
+/* A tall track holding a sticky stage. Scroll distance through the track is
+   the animation timeline; nothing is hijacked, the page scrolls normally.
+
+   Height minus 100vh is the scrub distance, so this number IS the speed of the
+   explode. It is tuned against WINDOW and the `at` values in the scene modules:
+   the last part has to finish travelling before the stage unpins. Shorten this
+   further and the teardown gets faster but the callouts start to flick past
+   before they can be read. */
+.engine-track {
+  position: relative;
+  height: 230vh;
+}
+@media (max-width: 767px) {
+  .engine-track { height: 200vh; }
+}
+
+.engine-stage {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  overflow: hidden;
+  display: grid;
+  align-content: center;
+}
+
+.engine-viewport {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.engine-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* Scrim under the copy. The engine passes behind the text, so the text needs
+   its own ground or the blades cut straight through it. */
+.engine-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    var(--navy-900) 0%, rgba(11, 42, 74, 0.55) 34%, rgba(11, 42, 74, 0.25) 62%,
+    rgba(11, 42, 74, 0.8) 100%);
+}
+@media (min-width: 900px) {
+  .engine-stage::before {
+    background: linear-gradient(90deg,
+      var(--navy-900) 0%, rgba(11, 42, 74, 0.92) 26%, rgba(11, 42, 74, 0.35) 46%,
+      transparent 62%);
+  }
+}
+
+.engine-labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.engine-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Offset up and right of the anchor point so the callout never sits on top
+     of the part it names. */
+  margin: -2.4rem 0 0 1.1rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--accent-solid);
+  display: grid;
+  gap: 1px;
+  opacity: 0;
+  visibility: hidden;
+  white-space: nowrap;
+  transition: opacity 0.25s linear;
+  will-change: transform, opacity;
+}
+.engine-label::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-solid);
+}
+.engine-label-name {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f2f6fb;
+}
+.engine-label-detail {
+  font-size: 0.75rem;
+  color: #9db0c8;
+}
+@media (max-width: 767px) {
+  .engine-label { margin: -1.8rem 0 0 0.7rem; }
+  .engine-label-detail { display: none; }
+}
+
+/* The copy sits above the canvas at one edge, so the engine has the middle. */
+.engine-copy {
+  position: relative;
+  z-index: 3;
+  pointer-events: none;
+  width: 100%;
+}
+.engine-copy > * { pointer-events: auto; }
+.engine-copy .inner { max-width: 34rem; }
+@media (min-width: 900px) {
+  .engine-copy .inner { max-width: 26rem; }
+}
+
+/* ----------------------------------------------- 11b. photograph slots */
+
+/* A picture the client has not chosen yet. It has to read as a deliberate hole
+   in a drawing rather than as a broken image, and it has to carry its own
+   reference code, because that code is what the client sends back. Held at the
+   exact aspect ratio of the real photograph, so dropping the choice in later
+   moves nothing on the page. */
+.slot {
+  display: grid;
+  place-items: center;
+  padding: clamp(1.1rem, 0.7rem + 1.4vw, 2rem);
+  background:
+    linear-gradient(180deg, rgba(11, 42, 74, 0.02), rgba(11, 42, 74, 0.06)),
+    var(--bg-sunken);
+}
+
+/* Drafting grid, drawn in CSS rather than loaded as an asset. Faded out
+   towards the bottom so it never competes with the label. */
+.slot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--hairline) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hairline) 1px, transparent 1px);
+  background-size: 30px 30px, 30px 30px;
+  -webkit-mask-image: radial-gradient(130% 110% at 50% 0%, #000 25%, transparent 80%);
+  mask-image: radial-gradient(130% 110% at 50% 0%, #000 25%, transparent 80%);
+}
+
+/* Crop marks. Dashed because the frame is provisional. */
+.slot-rule {
+  position: absolute;
+  inset: 0.75rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: 6px;
+  transition: border-color 0.4s var(--ease-io);
+}
+a.bezel:hover .slot-rule,
+.bezel-hover:hover .slot-rule { border-color: var(--accent-solid); }
+
+.slot-body {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.45rem;
+  max-width: 30ch;
+  text-align: center;
+}
+.slot-code {
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--r-pill);
+  background: var(--accent-wash);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+}
+.slot-where {
+  font-size: 0.9375rem;
+  font-weight: 560;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.slot-note {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--text-faint);
+  text-wrap: balance;
+}
+
+/* Inside a navy band the same slot has to sit on the band, not fight it. */
+.band-dark .slot { background: rgba(255, 255, 255, 0.03); }
+
+/* Progress rail. Shows how far through the teardown the reader is, which is
+   the one piece of state a pinned section otherwise hides. */
+.engine-rail {
+  position: absolute;
+  right: var(--gutter);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-align: right;
+}
+@media (min-width: 1100px) { .engine-rail { display: flex; } }
+
+/* No WebGL, or the module failed: the section still reads. The parts list
+   that is otherwise screen-reader-only becomes the visible content. */
+.engine-fallback { display: none; }
+[data-webgl="failed"] .engine-fallback { display: block; }
+
+/* --------------------------------------------------------------- 12. tables */
+
+.spec {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+.spec caption { text-align: left; font-weight: 620; margin-bottom: 0.85rem; font-size: var(--step-1); }
+.spec th, .spec td { padding: 0.7rem 0; text-align: left; vertical-align: top; }
+.spec th {
+  width: 42%;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding-right: 1rem;
+}
+.spec tr + tr { border-top: 1px solid var(--hairline); }
+.spec td { font-weight: 500; }
+
+.table-scroll { overflow-x: auto; overscroll-behavior-x: contain; }
+
+/* ------------------------------------------------------------- 13. openings */
+
+.roles { list-style: none; display: grid; gap: 0.75rem; }
+.role {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem 1.5rem;
+  align-items: center;
+  padding: clamp(1.15rem, 0.95rem + 0.8vw, 1.6rem);
+}
+.role-title { font-size: var(--step-1); font-weight: 580; letter-spacing: -0.012em; min-width: 0; }
+.role-meta {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+@media (min-width: 900px) {
+  .role { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1.4fr) auto; }
+  .role-meta { grid-column: auto; }
+}
+.role .arrow-link { justify-self: end; }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+  margin-bottom: 1.75rem;
+}
+.filters .field { min-width: 12rem; flex: 1 1 12rem; margin: 0; }
+.filter-count {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  padding-bottom: 0.85rem;
+}
+
+/* --------------------------------------------------------------- 14. notice */
+
+.notice {
+  border-left: 3px solid var(--accent-solid);
+  border-radius: 0 var(--r-inner) var(--r-inner) 0;
+  background: var(--bg-sunken);
+  padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+}
+.notice h3 { font-size: var(--step-1); margin-bottom: 0.5rem; }
+.notice p { color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6; }
+
+/* ---------------------------------------------------------------- 15. forms */
+
+.form { display: grid; gap: 1.25rem; }
+.form-grid { display: grid; gap: 1.25rem; }
+@media (min-width: 640px) { .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.field { display: grid; gap: 0.4rem; min-width: 0; }
+.field.span-2 { grid-column: 1 / -1; }
+
+.field label {
+  font-size: 0.875rem;
+  font-weight: 540;
+  letter-spacing: -0.004em;
+}
+.field .hint { font-size: 0.78rem; color: var(--text-faint); line-height: 1.45; }
+.req { color: var(--accent); margin-left: 0.15rem; }
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="url"],
+input[type="file"], select, textarea {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--r-control);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  transition: border-color 0.2s var(--ease-io), box-shadow 0.2s var(--ease-io);
+}
+textarea { resize: vertical; min-height: 7rem; }
+select {
+  appearance: none;
+  padding-right: 2.25rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%236b7889' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 0.7rem;
+}
+input::placeholder, textarea::placeholder { color: var(--text-faint); }
+input:hover, select:hover, textarea:hover { border-color: var(--accent-solid); }
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: none;
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus) 22%, transparent);
+}
+input[type="file"] { padding: 0.55rem 0.8rem; }
+input[type="file"]::file-selector-button {
+  margin-right: 0.85rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-control);
+  background: var(--bg-sunken);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 540;
+  cursor: pointer;
+}
+
+.check {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: start;
+  cursor: pointer;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.check input {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0.16rem 0 0;
+  accent-color: var(--accent-solid);
+  cursor: pointer;
+}
+
+.field[data-invalid] input,
+.field[data-invalid] select,
+.field[data-invalid] textarea { border-color: var(--error); }
+.field-error {
+  display: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--error);
+}
+.field[data-invalid] .field-error { display: block; }
+
+.form-status { border-radius: var(--r-inner); font-size: 0.9375rem; line-height: 1.6; }
+.form-status:not(:empty) { padding: 0.9rem 1.05rem; }
+.form-status[data-tone="error"] { background: var(--error-wash); color: var(--error); border: 1px solid color-mix(in srgb, var(--error) 30%, transparent); }
+.form-status[data-tone="ok"] { background: var(--accent-wash); color: var(--text); border: 1px solid var(--border-strong); }
+
+.honey { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.form-done h3 { margin-bottom: 0.75rem; }
+
+/* ---------------------------------------------------------------- 16. prose */
+
+.prose { max-width: 68ch; }
+.prose > * + * { margin-top: 1.15rem; }
+.prose h2 { margin-top: 2.75rem; font-size: var(--step-2); }
+.prose h3 { margin-top: 2rem; font-size: var(--step-1); }
+.prose h2:first-child, .prose h3:first-child { margin-top: 0; }
+.prose ul { padding-left: 1.15rem; }
+.prose li + li { margin-top: 0.5rem; }
+.prose li::marker { color: var(--accent); }
+.prose p, .prose li { color: var(--text-muted); }
+.prose strong { color: var(--text); }
+
+.duties { list-style: none; display: grid; gap: 0; }
+.duties li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.85rem;
+  padding-block: 0.7rem;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+.duties li + li { border-top: 1px solid var(--hairline); }
+.duties li::before {
+  content: "";
+  width: 5px; height: 5px;
+  margin-top: 0.62rem;
+  border-radius: 50%;
+  background: var(--accent-solid);
+}
+
+/* --------------------------------------------------------------- 17. footer */
+
+.footer { --bg: var(--navy-950); border-top: 1px solid rgba(255,255,255,.08); padding-block: clamp(3.5rem, 2.5rem + 3.5vw, 5.5rem) 2rem; }
+.footer-grid { display: grid; gap: clamp(2rem, 1.4rem + 2vw, 3.5rem); }
+@media (min-width: 700px)  { .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; } }
+.footer h2 {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.1rem;
+}
+.footer ul { list-style: none; display: grid; gap: 0.6rem; }
+.footer a { color: var(--text-muted); text-decoration: none; font-size: 0.9375rem; }
+.footer a:hover { color: var(--text); text-decoration: underline; }
+.footer address { font-style: normal; color: var(--text-muted); font-size: 0.9375rem; line-height: 1.7; }
+.footer-sign {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-top: 1.25rem;
+}
+.footer-base {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  padding-top: 1.5rem;
+  padding-bottom: env(safe-area-inset-bottom);
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--text-faint);
+}
+.footer-base ul { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; list-style: none; }
+.footer-base a { font-size: 0.8125rem; }
+
+/* ------------------------------------------------------------------ 18. cta */
+
+.cta { text-align: center; }
+.cta h2 { max-width: 20ch; margin-inline: auto; font-size: var(--step-4); }
+.cta p { max-width: 48ch; margin-inline: auto; color: var(--text-muted); }
+.cta .btn-row { justify-content: center; margin-top: 2.25rem; }
+
+/* ----------------------------------------------------------------- 19. misc */
+
+.pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.divider { height: 1px; background: var(--border); border: 0; margin: 0; }
+
+.callout-num {
+  font-size: var(--step-4);
+  font-weight: 640;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.breadcrumb a { color: inherit; text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent); text-decoration: underline; }
+.breadcrumb li + li::before { content: "/"; margin-right: 0.4rem; opacity: 0.5; }
+
+.credits-list { list-style: none; display: grid; gap: 0; }
+.credits-list li { padding-block: 0.9rem; border-bottom: 1px solid var(--hairline); font-size: 0.9375rem; color: var(--text-muted); }
+.credits-list b { color: var(--text); font-weight: 560; }
