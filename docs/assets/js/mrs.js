@@ -398,6 +398,7 @@
   const SCENES = {
     engine: { module: "./mrs-engine.js", mount: "mountEngine" },
     airframe: { module: "./mrs-airframe.js", mount: "mountAirframe" },
+    aircraft: { module: "./mrs-aircraft.js", mount: "mountAircraft" },
   };
 
   function initScenes() {
@@ -405,7 +406,14 @@
 
     $$("[data-scene]").forEach((host) => {
       const spec = SCENES[host.dataset.scene];
-      if (!spec) return;
+      if (!spec) {
+        // An unknown key used to mean an empty band: no canvas, and no
+        // fallback either, because nothing had marked the scene as failed.
+        // Fail loudly instead, so the part list shows.
+        host.setAttribute("data-webgl", "failed");
+        console.warn("unknown scene:", host.dataset.scene);
+        return;
+      }
 
       const io = new IntersectionObserver(
         async (entries) => {

@@ -977,6 +977,7 @@ body.dark-head .nav-wrap:not(.is-stuck) .nav-links a[aria-current="page"] { colo
    before they can be read. */
 .engine-track {
   position: relative;
+  background: var(--navy-900);
   height: 230vh;
 }
 @media (max-width: 767px) {
@@ -1007,15 +1008,19 @@ body.dark-head .nav-wrap:not(.is-stuck) .nav-links a[aria-current="page"] { colo
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(180deg,
-    var(--navy-900) 0%, rgba(11, 42, 74, 0.55) 34%, rgba(11, 42, 74, 0.25) 62%,
-    rgba(11, 42, 74, 0.8) 100%);
+  background:
+    radial-gradient(120% 90% at 72% 34%, rgba(41, 104, 156, 0.55), transparent 64%),
+    linear-gradient(180deg,
+      var(--navy-900) 0%, rgba(16, 58, 99, 0.62) 34%, rgba(20, 72, 120, 0.34) 62%,
+      rgba(11, 42, 74, 0.82) 100%);
 }
 @media (min-width: 900px) {
   .engine-stage::before {
-    background: linear-gradient(90deg,
-      var(--navy-900) 0%, rgba(11, 42, 74, 0.92) 26%, rgba(11, 42, 74, 0.35) 46%,
-      transparent 62%);
+    background:
+      radial-gradient(78% 120% at 74% 46%, rgba(45, 112, 168, 0.5), transparent 62%),
+      linear-gradient(90deg,
+        var(--navy-900) 0%, rgba(11, 42, 74, 0.9) 24%, rgba(14, 52, 88, 0.34) 46%,
+        transparent 64%);
   }
 }
 
@@ -1181,6 +1186,144 @@ a.bezel:hover .slot-rule,
    that is otherwise screen-reader-only becomes the visible content. */
 .engine-fallback { display: none; }
 [data-webgl="failed"] .engine-fallback { display: block; }
+
+/* A planned-work tile. Not a card with its fields missing: no image, a dashed
+   rule instead of a bezel, and a label that says what state it is in. It has to
+   read as a note beside the programmes, never as a third programme. */
+.planned {
+  margin-top: clamp(1rem, 0.7rem + 1.1vw, 1.75rem);
+  padding: clamp(1.4rem, 1.1rem + 1vw, 2.1rem);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-surface);
+  background: var(--bg-sunken);
+  display: grid;
+  gap: 0.5rem;
+}
+.planned-tag {
+  justify-self: start;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.planned h3 { font-size: var(--step-1); }
+.planned p {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
+/* --------------------------------------------- 11c. the investors diagram */
+
+/* Four lines fanning from one point to the four destination cards. Drawn on
+   when the block reveals, using the reveal observer that already exists: no
+   new JavaScript, and if the observer never fires the lines are simply
+   already drawn. */
+.flow {
+  margin: 0 auto clamp(-0.5rem, -1vw, -1rem);
+  max-width: 62rem;
+}
+.flow svg {
+  display: block;
+  width: 100%;
+  height: clamp(56px, 7vw, 96px);
+  overflow: visible;
+}
+.flow-line {
+  fill: none;
+  stroke: var(--accent-solid);
+  stroke-width: 1.5;
+  stroke-opacity: 0.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.flow-src, .flow-dot { fill: var(--accent-solid); opacity: 0; }
+.flow-src { opacity: 1; }
+
+/* The reveal class lands on .flow, so everything animates off one hook. */
+.flow.in .flow-line {
+  animation: flow-draw 1.1s var(--ease-out) forwards;
+  animation-delay: calc(var(--i) * 90ms);
+}
+.flow.in .flow-dot {
+  animation: flow-land 0.4s var(--ease-out) forwards;
+  animation-delay: calc(700ms + var(--i) * 90ms);
+}
+@keyframes flow-draw { to { stroke-dashoffset: 0; } }
+@keyframes flow-land { to { opacity: 1; } }
+
+/* Three across, for the reasons block. */
+.cols-3 {
+  display: grid;
+  gap: clamp(1rem, 0.7rem + 1.1vw, 1.75rem);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px) { .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* A four-across row that collapses cleanly. The four capabilities are peers,
+   so they get equal width rather than a bento. */
+.grid-4 {
+  display: grid;
+  gap: clamp(1rem, 0.7rem + 1.1vw, 1.75rem);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px)  { .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* The three steps, with a rule running behind them that draws left to right.
+   The rule is the sequence: it only makes sense because these are ordered. */
+.steps {
+  position: relative;
+  display: grid;
+  gap: clamp(1rem, 0.7rem + 1.1vw, 1.75rem);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px) {
+  .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .steps::before {
+    content: "";
+    position: absolute;
+    top: 2.6rem;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: var(--accent-solid);
+    opacity: 0.35;
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  .steps.in::before { animation: step-rule 1s var(--ease-io) 0.2s forwards; }
+}
+@keyframes step-rule { to { transform: scaleX(1); } }
+
+/* The page head can carry the same animated layer as the home hero. The
+   photograph and the scrim drop a level so the graticule sits above both. */
+.page-head-air .page-head-media { z-index: -3; }
+.page-head-air::after { z-index: -2; }
+.page-head-air .hero-air { opacity: 0.85; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* Drawn, not drawing. */
+  .flow-line { stroke-dashoffset: 0; }
+  .flow-dot { opacity: 1; }
+  .flow.in .flow-line, .flow.in .flow-dot { animation: none; }
+  .steps::before { transform: scaleX(1); }
+  .steps.in::before { animation: none; }
+}
+
+/* A legal disclaimer. Quiet, but not hidden: small and muted, still full
+   contrast enough to read, and never inside a collapsed element. */
+.disclaimer {
+  max-width: 78ch;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--hairline);
+}
 
 /* --------------------------------------------------------------- 12. tables */
 

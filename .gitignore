@@ -36,6 +36,12 @@ candidates/
 models-in/
 *.docx
 
+# --- archive ----------------------------------------------------------------
+# Things that were in docs/ and are no longer part of the site. Kept because
+# they are useful again later, ignored because they are not the site. The
+# photograph picker lives here once the client has chosen.
+archive/
+
 # --- build scratch ----------------------------------------------------------
 # Downloads, intermediate models, contact sheets. All reproducible.
 .work/

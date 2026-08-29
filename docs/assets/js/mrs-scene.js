@@ -175,6 +175,10 @@ export async function mountScrubScene(host, def) {
 
   const v = new THREE.Vector3();
   const size = { w: 0, h: 0 };
+  // Scratch list for the callout de-collision pass, reused every frame so the
+  // loop allocates nothing.
+  const marks = def.parts.map(() => ({ x: 0, y: 0, on: false }));
+  const MIN_GAP = 34;   // px between callout baselines before they read as one
 
   function resize() {
     const r = host.getBoundingClientRect();
@@ -204,26 +208,66 @@ export async function mountScrubScene(host, def) {
     def.pose(root, p);
     const locals = def.place(groups, p);
 
-    for (let i = 0; i < labels.length; i++) {
-      const el = labels[i];
+    // Pass one: project every visible part to screen space.
+    for (let i = 0; i < marks.length; i++) {
       const g = groups[def.parts[i].key];
-      const local = locals[i];
-      if (!el || !g) continue;
+      const m = marks[i];
       // A callout for a part that has not moved yet would sit on the assembled
       // stack with every other callout.
-      if (local < 0.35) {
+      m.on = !!g && locals[i] >= 0.35;
+      if (!m.on) continue;
+      g.getWorldPosition(v);
+      v.project(camera);
+      m.x = (v.x * 0.5 + 0.5) * size.w;
+      m.y = (-v.y * 0.5 + 0.5) * size.h;
+    }
+
+    // Pass two: separate callouts that land on the same place on screen.
+    //
+    // Geometry that comes apart cleanly in world space can still project to one
+    // spot, at a bad camera angle or on a narrow viewport, and two callouts in
+    // the same place are worse than one. Sort by y, find runs that sit in the
+    // same column and closer than MIN_GAP, then space each run evenly about its
+    // own mean. Spacing about the mean rather than pushing everything down is
+    // what stops a long run from marching off the bottom of the stage and away
+    // from the parts it is naming.
+    const order = [];
+    for (let i = 0; i < marks.length; i++) if (marks[i].on) order.push(i);
+    order.sort((a, b) => marks[a].y - marks[b].y);
+
+    let runStart = 0;
+    const closeRun = (end) => {
+      const n = end - runStart;
+      if (n < 2) return;
+      let sum = 0;
+      for (let k = runStart; k < end; k++) sum += marks[order[k]].y;
+      const top = sum / n - ((n - 1) * MIN_GAP) / 2;
+      for (let k = runStart; k < end; k++) marks[order[k]].y = top + (k - runStart) * MIN_GAP;
+    };
+    for (let k = 1; k < order.length; k++) {
+      const prev = marks[order[k - 1]];
+      const cur = marks[order[k]];
+      const near = Math.abs(cur.x - prev.x) <= 190 && cur.y - prev.y < MIN_GAP;
+      if (!near) {
+        closeRun(k);
+        runStart = k;
+      }
+    }
+    closeRun(order.length);
+
+    // Pass three: write.
+    for (let i = 0; i < labels.length; i++) {
+      const el = labels[i];
+      if (!el) continue;
+      if (!marks[i].on) {
         el.style.opacity = "0";
         el.style.visibility = "hidden";
         continue;
       }
-      // Project the part position to screen space and hang the callout there.
-      g.getWorldPosition(v);
-      v.project(camera);
-      const x = (v.x * 0.5 + 0.5) * size.w;
-      const y = (-v.y * 0.5 + 0.5) * size.h;
       el.style.visibility = "visible";
-      el.style.opacity = String(clamp((local - 0.35) / 0.3));
-      el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
+      el.style.opacity = String(clamp((locals[i] - 0.35) / 0.3));
+      el.style.transform =
+        `translate3d(${marks[i].x.toFixed(1)}px, ${marks[i].y.toFixed(1)}px, 0)`;
     }
 
     renderer.render(scene, camera);
