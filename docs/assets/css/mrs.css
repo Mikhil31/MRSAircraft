@@ -71,9 +71,6 @@
 
   --focus:         var(--navy-600);
 
-  /* The disc behind the aircraft in the brand mark. A variable because it has
-     to lift off a dark header photograph as well as off white. */
-  --brand-disc:    var(--navy-900);
 
   --ok:    #15803d;
   --error: #b3261e;
@@ -485,7 +482,41 @@ table, .spec, .salary { font-variant-numeric: tabular-nums; }
   text-decoration: none;
   color: var(--text);
 }
-.brand-mark { width: 44px; height: 30px; flex: none; }
+/* The business card mark, traced: swoosh, jet, MRS, wings. It arrives as two
+   single-colour SVGs used as masks rather than as inline paths, so one cached
+   file follows the nav through all three of its colourways - light over the
+   header photograph, dark once it condenses on a light page, light again on a
+   dark one. The body layer takes currentColor from .brand; the wings keep the
+   gold, which is the one part of the card that never changes with the ground.
+   683 x 324.5 is the traced viewBox, shared by both files so they register. */
+.brand-mark {
+  position: relative;
+  flex: none;
+  height: 34px;
+  width: calc(34px * 683 / 324.5);
+}
+.brand-mark::before,
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+.brand-mark::before {
+  background: currentColor;
+  -webkit-mask-image: url(../img/mrs-mark-body.svg);
+          mask-image: url(../img/mrs-mark-body.svg);
+}
+.brand-mark::after {
+  background: var(--accent-solid);
+  -webkit-mask-image: url(../img/mrs-mark-wings.svg);
+          mask-image: url(../img/mrs-mark-wings.svg);
+}
 .brand-text {
   display: flex;
   flex-direction: column;
@@ -493,8 +524,10 @@ table, .spec, .salary { font-variant-numeric: tabular-nums; }
 }
 .brand-name {
   font-size: 1.0625rem;
-  font-weight: 660;
-  letter-spacing: -0.014em;
+  font-weight: 620;
+  /* Tracked out a little, because it is now continuing the card's own
+     A I R C R A F T rather than opening the name. */
+  letter-spacing: 0.01em;
 }
 .brand-sub {
   font-family: var(--mono);
@@ -503,6 +536,12 @@ table, .spec, .salary { font-variant-numeric: tabular-nums; }
   text-transform: uppercase;
   color: var(--text-faint);
   margin-top: 3px;
+}
+
+@media (max-width: 400px) {
+  /* Room for the toggle and the CTA. The mark alone still says the name. */
+  .brand-mark { height: 30px; width: calc(30px * 683 / 324.5); }
+  .brand-text { display: none; }
 }
 
 .nav-links {
@@ -931,9 +970,6 @@ a.bezel:hover .media img, .bezel-hover:hover .media img { transform: scale(1.045
    until it condenses. In dark mode its text is already light; in light mode it
    would be near-black on a near-black scrim. Invert it while it is over the
    header and let .is-stuck hand it back. */
-body.dark-head .nav-wrap:not(.is-stuck) {
-  --brand-disc: var(--navy-700);
-}
 body.dark-head .nav-wrap:not(.is-stuck) .brand { color: #f4f8fd; }
 body.dark-head .nav-wrap:not(.is-stuck) .brand-sub { color: rgba(244, 248, 253, 0.6); }
 body.dark-head .nav-wrap:not(.is-stuck) .nav-links a { color: rgba(244, 248, 253, 0.78); }
@@ -1553,6 +1589,15 @@ input[type="file"]::file-selector-button {
 
 .footer { --bg: var(--navy-950); border-top: 1px solid rgba(255,255,255,.08); padding-block: clamp(3.5rem, 2.5rem + 3.5vw, 5.5rem) 2rem; }
 .footer-grid { display: grid; gap: clamp(2rem, 1.4rem + 2vw, 3.5rem); }
+/* The full lockup, as traced, standing where the other columns put a label.
+   The footer band is the one surface on the site that is always navy, which is
+   the ground the artwork was drawn for, so it ships in its own colours. */
+.footer-logo {
+  display: block;
+  width: auto;
+  height: clamp(58px, 50px + 1.7vw, 78px);
+  margin-bottom: 1.35rem;
+}
 @media (min-width: 700px)  { .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1024px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; } }
 .footer h2 {

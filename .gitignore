@@ -36,6 +36,11 @@ candidates/
 models-in/
 *.docx
 
+# The vector trace of the printed business card. tools/build_logo.py cuts the
+# shipped files out of it into docs/assets/. The trace itself is working
+# material, and the card is the client's, not ours to publish.
+MRS logo assets/
+
 # --- archive ----------------------------------------------------------------
 # Things that were in docs/ and are no longer part of the site. Kept because
 # they are useful again later, ignored because they are not the site. The

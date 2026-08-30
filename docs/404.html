@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found | MRS Aircraft</title>
 <meta name="robots" content="noindex">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" id="fav">
 <meta name="description" content="The page you asked for is not on this site.">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0a121c" media="(prefers-color-scheme: dark)">
@@ -25,10 +26,26 @@
        font-weight:560; font-size:.9375rem; }
   a:hover { border-color:var(--gold); color:var(--gold); }
   a:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+  /* The mark, masked the same way the nav does it, so it takes the page's
+     own colour in both schemes. The two urls are absolute so the mark still
+     lands on a 404 at any depth, and are rewritten below when the site is
+     served from a GitHub Pages project subpath. */
+  .mark { position:relative; width:88px; height:42px; margin-bottom:2rem;
+    --body:url("/assets/img/mrs-mark-body.svg");
+    --wings:url("/assets/img/mrs-mark-wings.svg"); }
+  .mark::before, .mark::after { content:""; position:absolute; inset:0;
+    -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+    -webkit-mask-position:left center; mask-position:left center;
+    -webkit-mask-size:contain; mask-size:contain; }
+  .mark::before { background:currentColor;
+    -webkit-mask-image:var(--body); mask-image:var(--body); }
+  .mark::after { background:var(--gold);
+    -webkit-mask-image:var(--wings); mask-image:var(--wings); }
 </style>
 </head>
 <body>
   <main>
+    <div class="mark" role="img" aria-label="MRS Aircraft Private Limited"></div>
     <p class="code">Error 404</p>
     <h1>That page is not here.</h1>
     <p class="body">The link may be out of date, or the page may have moved. Everything on this
@@ -38,10 +55,16 @@
   <script>
     // On a GitHub Pages project site the whole site lives under /<repo>/, so a
     // bare "/" would leave it. Keep the first path segment in that case.
+    var base = "/";
     if (location.hostname.endsWith(".github.io")) {
       var seg = location.pathname.split("/")[1];
-      if (seg) document.getElementById("home").href = "/" + seg + "/";
+      if (seg) base = "/" + seg + "/";
     }
+    document.getElementById("home").href = base;
+    document.getElementById("fav").href = base + "assets/favicon.svg";
+    var m = document.querySelector(".mark").style;
+    m.setProperty("--body",  'url("' + base + 'assets/img/mrs-mark-body.svg")');
+    m.setProperty("--wings", 'url("' + base + 'assets/img/mrs-mark-wings.svg")');
   </script>
 </body>
 </html>
