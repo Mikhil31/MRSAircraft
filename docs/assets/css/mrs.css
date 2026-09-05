@@ -1674,3 +1674,20 @@ input[type="file"]::file-selector-button {
 .credits-list { list-style: none; display: grid; gap: 0; }
 .credits-list li { padding-block: 0.9rem; border-bottom: 1px solid var(--hairline); font-size: 0.9375rem; color: var(--text-muted); }
 .credits-list b { color: var(--text); font-weight: 560; }
+
+/* --------------------------------------------------------------- 21. the map */
+
+/* An iframe has no intrinsic size, so the box sets one. Google's own tiles are
+   left alone: inverting them turns the labels into unreadable mud, and the
+   card's border already separates the map from the page. */
+.map-embed {
+  display: block;
+  width: 100%;
+  height: clamp(13rem, 30vw, 17rem);
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: var(--r-inner) var(--r-inner) 0 0;
+}
+
+.map-foot { padding-top: 0.9rem; padding-bottom: 0.9rem; }
+.map-foot .arrow-link { white-space: normal; }

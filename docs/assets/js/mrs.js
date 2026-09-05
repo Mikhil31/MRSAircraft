@@ -276,7 +276,7 @@
       const submit = form.querySelector("[type=submit]");
       const submitLabel = submit ? submit.querySelector("[data-label]") : null;
       const endpoint = form.dataset.endpoint || "";
-      const fallbackMail = form.dataset.fallbackMail || "info@mrsaircraft.com";
+      const fallbackMail = form.dataset.fallbackMail || "mdmrsaircraft@gmail.com";
       const controls = $$("input, select, textarea", form).filter(
         (el) => el.name && el.name !== "_honey"
       );
@@ -331,12 +331,9 @@
         }
 
         if (!endpoint) {
-          // No silent success. If the form is not wired up, say so and give a
-          // route that definitely works. See DEPLOY.md.
-          setStatus(
-            "error",
-            `This form is not connected to a mailbox yet, so nothing was sent. Please email ${fallbackMail} directly.`
-          );
+          // No silent success. If the form is not wired up, hand over a route
+          // that works rather than explaining the plumbing. See DEPLOY.md.
+          setStatus("error", `Please email us at ${fallbackMail}.`);
           return;
         }
 
@@ -366,7 +363,7 @@
         } catch (err) {
           setStatus(
             "error",
-            `We could not send that just now. Please try again, or email ${fallbackMail} directly.`
+            `That did not send. Please try again, or email us at ${fallbackMail}.`
           );
         } finally {
           sending = false;
